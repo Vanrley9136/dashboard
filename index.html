@@ -19,180 +19,38 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <!-- SortableJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+
     <style>
       :root {
-        --sidebar-bg: #1e293b; /* Azul escuro para o fundo do sidebar */
-        --sidebar-text-color: #e2e8f0; /* Texto claro para contraste */
-        --primary-bg: #f1f5f9; /* Fundo principal claro */
-        --secondary-bg: #334155; /* Cinza escuro para contraste */
-        --icon-color: #94a3b8; /* Ícones em tons suaves */
-        --text-color: #475569; /* Texto em tons médios para legibilidade */
-        --header-bg: #ffffff; /* Fundo branco para o cabeçalho */
-        --accent-color: #10b981; /* Verde para destaques */
-      }
-
-      /* Custom Scrollbar for Sidebar */
-      .sidebar::-webkit-scrollbar {
-        width: 6px;
-      }
-      .sidebar::-webkit-scrollbar-thumb {
-        background-color: rgba(255, 255, 255, 0.2);
-        border-radius: 3px;
+        --sidebar-bg: #1e293b;
+        --sidebar-text-color: #e2e8f0;
+        --primary-bg: #f1f5f9;
+        --secondary-bg: #334155;
+        --icon-color: #94a3b8;
+        --text-color: #475569;
+        --header-bg: #ffffff;
+        --accent-color: #10b981;
       }
 
       body {
         font-family: "Poppins", sans-serif !important;
-        background-color: var(--primary-bg); /* Fundo principal claro */
+        background-color: var(--primary-bg);
       }
 
-      /* Hover effects */
       .hover-shadow:hover {
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         transition: all 0.2s ease-in-out;
       }
 
-      /* Animation */
-      .slide-in {
-        animation: slideIn 0.5s forwards;
-      }
-
-      @keyframes slideIn {
-        from {
-          opacity: 0;
-          transform: translateX(-20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      /* Square Buttons */
-      .square-button {
-        width: 50px;
-        height: 50px;
-        background-color: var(--accent-color); /* Verde para botões de ação */
-        color: var(--sidebar-text-color);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background-color 0.3s ease;
-      }
-
-      .square-button:hover {
-        background-color: #0ea672; /* Verde mais escuro ao passar o mouse */
-      }
-
-      /* Custom Sidebar Background */
-      .sidebar {
-        background: var(--sidebar-bg);
-        color: var(--sidebar-text-color);
-        transition: width 0.3s ease;
-        width: 16rem; /* Largura do sidebar expandido */
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-
-      .sidebar-collapsed {
-        width: 4rem; /* Largura quando o sidebar está colapsado */
-      }
-
-      .sidebar a {
-        color: var(--sidebar-text-color);
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 3rem; /* Fixar a altura para alinhar os ícones */
-        padding: 0 1rem;
-        font-weight: 500;
-      }
-
-      .sidebar a:hover {
-        background-color: var(--accent-color); /* Verde para hover */
-        border-radius: 4px;
-      }
-
-      .sidebar i {
-        color: var(--icon-color);
-      }
-
-      /* Primary background for other sections */
-      .bg-blue-custom {
-        background-color: var(--secondary-bg);
-        color: var(--sidebar-text-color); /* Texto claro para seções secundárias */
-      }
-
-      /* Positioning icons outside the container */
-      .action-icons {
-        position: relative;
-        margin-top: -70px; /* Aumenta a margem para posicionar os ícones mais abaixo */
-        padding-top: 80px;
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-      }
-
-      /* Sidebar modern transition */
-      .sidebar-collapsed {
-        width: 4rem; /* Largura quando o sidebar está colapsado */
-      }
-
-      /* Fullscreen button styles */
-      .fullscreen-btn {
-        cursor: pointer;
-        padding: 0.5rem;
-        background-color: var(--header-bg);
-        border-radius: 50%;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        color: var(--accent-color);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .fullscreen-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      }
-
-      .sidebar-text {
-        display: inline-block;
-        white-space: nowrap;
-        margin-left: 0.5rem;
-      }
-
-      .sidebar-collapsed .sidebar-text {
-        display: none; /* Esconde o texto quando colapsado */
-      }
-
-      .sidebar .sidebar-icon {
-        margin-right: 1rem;
-      }
-
-      /* Version Style */
-      .version {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        padding: 5px 10px;
-        background: var(--accent-color);
-        border-radius: 5px;
-        color: var(--header-bg); /* Cor clara para o texto da versão */
-        font-size: 12px;
-        font-weight: 600;
-      }
-
-      /* Dropdown styles */
+      /* Adiciona estilo para garantir que os itens do dropdown fiquem em uma coluna vertical */
       .dropdown-menu {
         display: none;
-        flex-direction: column;
+        flex-direction: column; /* Garante que os itens fiquem em coluna */
         margin-top: 0.5rem;
         padding-left: 1.5rem;
-      }
-
-      .dropdown.active .dropdown-menu {
-        display: flex;
+        width: 100%; /* Garante que o menu dropdown ocupe a largura correta */
       }
 
       .dropdown-menu a {
@@ -200,6 +58,8 @@
         color: var(--sidebar-text-color);
         border-radius: 0.25rem;
         transition: background-color 0.2s ease-in-out;
+        width: 100%; /* Garante que o link ocupe toda a largura do menu */
+        text-align: left; /* Alinha o texto à esquerda */
       }
 
       .dropdown-menu a:hover {
@@ -210,6 +70,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        width: 100%;
       }
 
       .dropdown-toggle i {
@@ -220,21 +81,105 @@
         transform: rotate(180deg);
       }
 
-      /* Text color adjustments */
-      .text-gray-600 {
-        color: var(--text-color); /* Cor escura para o texto principal */
+      .square-button {
+        width: 50px;
+        height: 50px;
+        background-color: var(--accent-color);
+        color: var(--sidebar-text-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease;
       }
 
-      .bg-white {
-        background-color: var(--header-bg); /* Fundo claro para os containers */
+      .square-button:hover {
+        background-color: #0ea672;
       }
 
-      /* Developer Credits */
+      .sidebar {
+        background: var(--sidebar-bg);
+        color: var(--sidebar-text-color);
+        transition: width 0.3s ease;
+        width: 16rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .sidebar-collapsed {
+        width: 4rem;
+      }
+
+      .sidebar a {
+        color: var(--sidebar-text-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 3rem;
+        padding: 0 1rem;
+        font-weight: 500;
+      }
+
+      .sidebar a:hover {
+        background-color: var(--accent-color);
+        border-radius: 4px;
+      }
+
+      .sidebar i {
+        color: var(--icon-color);
+      }
+
+      .bg-blue-custom {
+        background-color: var(--secondary-bg);
+        color: var(--sidebar-text-color);
+      }
+
+      .action-icons {
+        position: relative;
+        margin-top: -70px;
+        padding-top: 80px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .sidebar-text {
+        display: inline-block;
+        white-space: nowrap;
+        margin-left: 0.5rem;
+      }
+
+      .sidebar-collapsed .sidebar-text {
+        display: none;
+      }
+
+      .sidebar .sidebar-icon {
+        margin-right: 1rem;
+      }
+
+      .version {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        padding: 5px 10px;
+        background: var(--accent-color);
+        border-radius: 5px;
+        color: var(--header-bg);
+        font-size: 12px;
+        font-weight: 600;
+      }
+
       .developer-credits {
         text-align: center;
         padding: 1rem;
         font-size: 0.875rem;
         color: var(--text-color);
+      }
+
+      .sortable-container {
+        min-height: 100px;
       }
     </style>
   </head>
@@ -341,7 +286,7 @@
         <header
           class="flex items-center justify-between mb-6 bg-blue-custom p-4 rounded-md shadow-lg"
         >
-          <h1 class="text-3xl font-bold ">Auditoria - Programação</h1>
+          <h1 class="text-3xl font-bold">Auditoria - Programação</h1>
           <div class="flex items-center space-x-4">
             <span class="text-gray-700 text-lg font-semibold">Moore</span>
             <button id="fullscreenToggle" class="fullscreen-btn">
@@ -363,9 +308,15 @@
         </header>
 
         <!-- Tables Section -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div
+          id="sortableContainer"
+          class="grid grid-cols-1 lg:grid-cols-3 gap-6 sortable-container"
+        >
           <!-- Tabela 1: Detalhes da Programação -->
-          <div class="bg-white p-6 rounded-lg shadow-lg hover-shadow">
+          <div
+            class="bg-white p-6 rounded-lg shadow-lg hover-shadow"
+            data-id="1"
+          >
             <div
               class="flex items-center justify-between mb-4 bg-blue-custom p-2 rounded-md shadow"
             >
@@ -415,7 +366,10 @@
           </div>
 
           <!-- Tabela 2: Recursos Contratados -->
-          <div class="bg-white p-6 rounded-lg shadow-lg hover-shadow">
+          <div
+            class="bg-white p-6 rounded-lg shadow-lg hover-shadow"
+            data-id="2"
+          >
             <div
               class="flex items-center justify-between mb-4 bg-blue-custom p-2 rounded-md shadow"
             >
@@ -467,7 +421,10 @@
           </div>
 
           <!-- Tabela 3: Recursos Alocados -->
-          <div class="bg-white p-6 rounded-lg shadow-lg hover-shadow">
+          <div
+            class="bg-white p-6 rounded-lg shadow-lg hover-shadow"
+            data-id="3"
+          >
             <div
               class="flex items-center justify-between mb-4 bg-blue-custom p-2 rounded-md shadow"
             >
@@ -519,9 +476,7 @@
         </div>
 
         <!-- Developer Credits -->
-        <div class="developer-credits">
-          Desenvolvido por [Vanrley Macedo]
-        </div>
+        <div class="developer-credits">Desenvolvido por [Vanrley Macedo]</div>
 
         <!-- Versão do sistema -->
         <div class="version">Versão 1.0.0</div>
@@ -530,14 +485,41 @@
 
     <!-- Scripts -->
     <script>
-      // Toggle Dropdowns
-      document.querySelectorAll(".dropdown-toggle").forEach((toggle) => {
-        toggle.addEventListener("click", function () {
-          const parentDropdown = this.parentElement;
-          parentDropdown.classList.toggle("active");
-        });
+      // Ensure all dropdowns are initially closed
+      document.querySelectorAll(".dropdown-menu").forEach((menu) => {
+        menu.style.display = "none";
       });
 
+      // Toggle Dropdowns on click
+      document.querySelectorAll(".dropdown-toggle").forEach((toggle) => {
+        toggle.addEventListener("click", function (e) {
+          e.preventDefault();
+          const parentDropdown = this.parentElement;
+          const menu = parentDropdown.querySelector(".dropdown-menu");
+
+          // Close any open dropdowns
+          document.querySelectorAll(".dropdown-menu").forEach((otherMenu) => {
+            if (otherMenu !== menu) {
+              otherMenu.style.display = "none";
+              otherMenu.parentElement.classList.remove("active");
+              otherMenu.previousElementSibling.querySelector(
+                "i"
+              ).style.transform = "rotate(0deg)";
+            }
+          });
+
+          // Toggle the current dropdown
+          if (menu.style.display === "none") {
+            menu.style.display = "flex";
+            parentDropdown.classList.add("active");
+            this.querySelector("i").style.transform = "rotate(180deg)";
+          } else {
+            menu.style.display = "none";
+            parentDropdown.classList.remove("active");
+            this.querySelector("i").style.transform = "rotate(0deg)";
+          }
+        });
+      });
 
       // Toggle Fullscreen
       const fullscreenToggle = document.getElementById("fullscreenToggle");
@@ -551,6 +533,25 @@
           }
         }
       });
+
+      // Initialize SortableJS
+      const container = document.getElementById("sortableContainer");
+      const sortable = Sortable.create(container, {
+        animation: 150,
+        onEnd: function (evt) {
+          const order = sortable.toArray();
+          localStorage.setItem("dashboardOrder", JSON.stringify(order));
+        },
+      });
+
+      // Restore order from localStorage
+      const savedOrder = JSON.parse(localStorage.getItem("dashboardOrder"));
+      if (savedOrder) {
+        savedOrder.forEach((id) => {
+          const element = document.querySelector(`[data-id='${id}']`);
+          container.appendChild(element);
+        });
+      }
     </script>
   </body>
 </html>
