@@ -223,6 +223,48 @@
       .sortable-container {
         min-height: 100px;
       }
+
+      .clock {
+        font-size: 1.75rem; /* Tamanho maior para destaque */
+        color: #ffffff; /* Cor branca para contraste */
+        font-weight: 700; /* Negrito para maior destaque */
+        text-align: center; /* Centraliza o texto */
+        background-color: #10b981; /* Fundo verde para destacar */
+        padding: 0.5rem 1rem; /* Espaçamento interno */
+        border-radius: 0.5rem; /* Bordas arredondadas */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidade */
+        margin: 0 auto; /* Centraliza na horizontal */
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: var(--secondary-bg); /* Cor de fundo para o header */
+        padding: 1rem; /* Espaçamento interno */
+        border-bottom: 1px solid #e5e7eb; /* Linha de divisão */
+      }
+
+      /* Estilizar o scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px; /* Largura do scrollbar */
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9; /* Cor do fundo da barra */
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: #334155; /* Cor da barra de rolagem */
+        border-radius: 10px; /* Arredondamento */
+        border: 2px solid #f1f5f9; /* Espaço entre a barra e o conteúdo */
+      }
+
+      /* Para outros navegadores */
+      .scroll-container {
+        scrollbar-color: #334155 #f1f5f9; /* Cor da barra e do fundo */
+        scrollbar-width: thin; /* Largura fina da barra */
+      }
     </style>
   </head>
   <body class="font-poppins">
@@ -329,6 +371,7 @@
           class="flex items-center justify-between mb-6 bg-blue-custom p-4 rounded-md shadow-lg"
         >
           <h1 class="text-3xl font-bold">Auditoria - Programação</h1>
+          <div class="clock" id="clock">00:00:00</div>
           <div class="flex items-center space-x-4">
             <span class="text-gray-700 text-lg font-semibold">Moore</span>
             <button id="fullscreenToggle" class="fullscreen-btn">
@@ -385,6 +428,38 @@
                     <td class="py-3 px-6 text-left">FRACHT</td>
                     <td class="py-3 px-6 text-center">22460</td>
                   </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      0043/2024
+                    </td>
+                    <td class="py-3 px-6 text-left">LUMIX</td>
+                    <td class="py-3 px-6 text-left">LUMIX</td>
+                    <td class="py-3 px-6 text-center">22461</td>
+                  </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      0044/2024
+                    </td>
+                    <td class="py-3 px-6 text-left">CORPTECH</td>
+                    <td class="py-3 px-6 text-left">CORPTECH</td>
+                    <td class="py-3 px-6 text-center">22462</td>
+                  </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      0045/2024
+                    </td>
+                    <td class="py-3 px-6 text-left">ALPHALOGIC</td>
+                    <td class="py-3 px-6 text-left">ALPHALOGIC</td>
+                    <td class="py-3 px-6 text-center">22463</td>
+                  </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      0046/2024
+                    </td>
+                    <td class="py-3 px-6 text-left">MEGASTAR</td>
+                    <td class="py-3 px-6 text-left">MEGASTAR</td>
+                    <td class="py-3 px-6 text-center">22464</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -440,6 +515,40 @@
                     <td class="py-3 px-6 text-center">0</td>
                     <td class="py-3 px-6 text-center">0</td>
                   </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left whitespace-nowrap">Pleno</td>
+                    <td class="py-3 px-6 text-center">2</td>
+                    <td class="py-3 px-6 text-center">Normal</td>
+                    <td class="py-3 px-6 text-center">1</td>
+                    <td class="py-3 px-6 text-center">2</td>
+                  </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      Júnior
+                    </td>
+                    <td class="py-3 px-6 text-center">3</td>
+                    <td class="py-3 px-6 text-center">Normal</td>
+                    <td class="py-3 px-6 text-center">2</td>
+                    <td class="py-3 px-6 text-center">3</td>
+                  </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      Coordenador
+                    </td>
+                    <td class="py-3 px-6 text-center">1</td>
+                    <td class="py-3 px-6 text-center">Especial</td>
+                    <td class="py-3 px-6 text-center">0</td>
+                    <td class="py-3 px-6 text-center">1</td>
+                  </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      Estagiário
+                    </td>
+                    <td class="py-3 px-6 text-center">5</td>
+                    <td class="py-3 px-6 text-center">Normal</td>
+                    <td class="py-3 px-6 text-center">4</td>
+                    <td class="py-3 px-6 text-center">5</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -486,6 +595,50 @@
                   <tr class="border-b border-gray-200 hover:bg-gray-100">
                     <td class="py-3 px-6 text-left whitespace-nowrap">
                       Julia Emily Souza da Silva - Trainee
+                    </td>
+                    <td class="py-3 px-6 text-center">
+                      <input
+                        type="checkbox"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      Lucas Gabriel Oliveira - Analista Júnior
+                    </td>
+                    <td class="py-3 px-6 text-center">
+                      <input
+                        type="checkbox"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      Mariana Ribeiro Santos - Assistente Administrativo
+                    </td>
+                    <td class="py-3 px-6 text-center">
+                      <input
+                        type="checkbox"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      Felipe Costa Lima - Estagiário
+                    </td>
+                    <td class="py-3 px-6 text-center">
+                      <input
+                        type="checkbox"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      Ana Clara Mendes - Analista de Projetos
                     </td>
                     <td class="py-3 px-6 text-center">
                       <input
@@ -588,6 +741,46 @@
           </div>
         </div>
 
+        <!-- Novo Container de Botões -->
+        <div
+          class="bg-white p-4 mb-6 rounded-md shadow-lg flex flex-wrap items-center justify-center gap-2"
+        >
+          <!-- Botão Lançar -->
+          <button
+            class="bg-blue-500 text-white flex items-center px-3 py-2 rounded-md shadow-md hover:bg-blue-600 transition"
+          >
+            <i class="fas fa-play mr-2"></i> Lançar
+          </button>
+
+          <!-- Botão Cancelar -->
+          <button
+            class="bg-red-500 text-white flex items-center px-3 py-2 rounded-md shadow-md hover:bg-red-600 transition"
+          >
+            <i class="fas fa-times mr-2"></i> Cancelar
+          </button>
+
+          <!-- Botão Mapa -->
+          <button
+            class="bg-green-500 text-white flex items-center px-3 py-2 rounded-md shadow-md hover:bg-green-600 transition"
+          >
+            <i class="fas fa-map-marker-alt mr-2"></i> Mapa
+          </button>
+
+          <!-- Botão Confirmar -->
+          <button
+            class="bg-yellow-500 text-white flex items-center px-3 py-2 rounded-md shadow-md hover:bg-yellow-600 transition"
+          >
+            <i class="fas fa-check mr-2"></i> Confirmar
+          </button>
+
+          <!-- Botão Consultar -->
+          <button
+            class="bg-purple-500 text-white flex items-center px-3 py-2 rounded-md shadow-md hover:bg-purple-600 transition"
+          >
+            <i class="fas fa-search mr-2"></i> Consultar
+          </button>
+        </div>
+
         <!-- Developer Credits -->
         <div class="developer-credits">Desenvolvido por [Vanrley Macedo]</div>
 
@@ -665,6 +858,21 @@
           container.appendChild(element);
         });
       }
+
+      // Script para atualizar o relógio
+      function updateClock() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, "0");
+        const minutes = String(now.getMinutes()).padStart(2, "0");
+        const seconds = String(now.getSeconds()).padStart(2, "0");
+        document.getElementById(
+          "clock"
+        ).textContent = `${hours}:${minutes}:${seconds}`;
+      }
+
+      // Atualiza o relógio a cada segundo
+      setInterval(updateClock, 1000);
+      updateClock(); // Chama para atualizar imediatamente
     </script>
   </body>
 </html>
