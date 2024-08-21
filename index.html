@@ -21,14 +21,14 @@
     />
     <style>
       :root {
-        --sidebar-bg: #2b3a42; /* Fundo azul petróleo para o sidebar */
-        --sidebar-text-color: #f4f4f9; /* Texto claro para contraste */
-        --primary-bg: #f7f8fa; /* Fundo principal claro e suave */
-        --secondary-bg: #3b4f5c; /* Cinza escuro para contrastar com o fundo */
-        --icon-color: #c3cfd9; /* Ícones em tons suaves */
-        --text-color: #2e3a42; /* Texto em tons médios para legibilidade */
+        --sidebar-bg: #1e293b; /* Azul escuro para o fundo do sidebar */
+        --sidebar-text-color: #e2e8f0; /* Texto claro para contraste */
+        --primary-bg: #f1f5f9; /* Fundo principal claro */
+        --secondary-bg: #334155; /* Cinza escuro para contraste */
+        --icon-color: #94a3b8; /* Ícones em tons suaves */
+        --text-color: #475569; /* Texto em tons médios para legibilidade */
         --header-bg: #ffffff; /* Fundo branco para o cabeçalho */
-        --accent-color: #e3b341; /* Dourado para detalhes de destaque */
+        --accent-color: #10b981; /* Verde para destaques */
       }
 
       /* Custom Scrollbar for Sidebar */
@@ -71,7 +71,7 @@
       .square-button {
         width: 50px;
         height: 50px;
-        background-color: var(--accent-color); /* Dourado para botões de ação */
+        background-color: var(--accent-color); /* Verde para botões de ação */
         color: var(--sidebar-text-color);
         border-radius: 50%;
         display: flex;
@@ -81,7 +81,7 @@
       }
 
       .square-button:hover {
-        background-color: #d1a134; /* Dourado mais escuro ao passar o mouse */
+        background-color: #0ea672; /* Verde mais escuro ao passar o mouse */
       }
 
       /* Custom Sidebar Background */
@@ -111,7 +111,7 @@
       }
 
       .sidebar a:hover {
-        background-color: var(--accent-color); /* Dourado para hover */
+        background-color: var(--accent-color); /* Verde para hover */
         border-radius: 4px;
       }
 
@@ -122,9 +122,7 @@
       /* Primary background for other sections */
       .bg-blue-custom {
         background-color: var(--secondary-bg);
-        color: var(
-          --sidebar-text-color
-        ); /* Texto claro para seções secundárias */
+        color: var(--sidebar-text-color); /* Texto claro para seções secundárias */
       }
 
       /* Positioning icons outside the container */
@@ -230,9 +228,17 @@
       .bg-white {
         background-color: var(--header-bg); /* Fundo claro para os containers */
       }
+
+      /* Developer Credits */
+      .developer-credits {
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.875rem;
+        color: var(--text-color);
+      }
     </style>
   </head>
-  <body class="font-poppins bg-gradient-to-r from-gray-100 to-blue-50">
+  <body class="font-poppins">
     <!-- Wrapper -->
     <div class="flex h-screen">
       <!-- Sidebar -->
@@ -244,7 +250,7 @@
               <li>
                 <a
                   href="#"
-                  class="p-3 text-white hover:bg-blue-500 rounded-md transition-colors hover-shadow"
+                  class="p-3 hover:bg-gray-700 rounded-md transition-colors hover-shadow"
                 >
                   <i class="fas fa-home text-lg sidebar-icon"></i>
                   <span class="sidebar-text text-md">Dashboard</span>
@@ -253,7 +259,7 @@
               <li class="dropdown">
                 <a
                   href="#"
-                  class="p-3 text-white hover:bg-blue-500 rounded-md transition-colors hover-shadow dropdown-toggle"
+                  class="p-3 hover:bg-gray-700 rounded-md transition-colors hover-shadow dropdown-toggle"
                 >
                   <div>
                     <i class="fas fa-calendar-alt text-lg sidebar-icon"></i>
@@ -269,7 +275,7 @@
               <li class="dropdown">
                 <a
                   href="#"
-                  class="p-3 text-white hover:bg-blue-500 rounded-md transition-colors hover-shadow dropdown-toggle"
+                  class="p-3 hover:bg-gray-700 rounded-md transition-colors hover-shadow dropdown-toggle"
                 >
                   <div>
                     <i class="fas fa-users text-lg sidebar-icon"></i>
@@ -285,7 +291,7 @@
               <li class="dropdown">
                 <a
                   href="#"
-                  class="p-3 text-white hover:bg-blue-500 rounded-md transition-colors hover-shadow dropdown-toggle"
+                  class="p-3 hover:bg-gray-700 rounded-md transition-colors hover-shadow dropdown-toggle"
                 >
                   <div>
                     <i class="fas fa-tasks text-lg sidebar-icon"></i>
@@ -301,7 +307,7 @@
               <li class="dropdown">
                 <a
                   href="#"
-                  class="p-3 text-white hover:bg-blue-500 rounded-md transition-colors hover-shadow dropdown-toggle"
+                  class="p-3 hover:bg-gray-700 rounded-md transition-colors hover-shadow dropdown-toggle"
                 >
                   <div>
                     <i class="fas fa-cog text-lg sidebar-icon"></i>
@@ -335,9 +341,9 @@
         <header
           class="flex items-center justify-between mb-6 bg-blue-custom p-4 rounded-md shadow-lg"
         >
-          <h1 class="text-3xl font-bold">Auditoria - Programação</h1>
+          <h1 class="text-3xl font-bold ">Auditoria - Programação</h1>
           <div class="flex items-center space-x-4">
-            <span class="text-white text-lg font-semibold">Moore</span>
+            <span class="text-gray-700 text-lg font-semibold">Moore</span>
             <button id="fullscreenToggle" class="fullscreen-btn">
               <i class="fa-solid fa-expand"></i>
             </button>
@@ -391,17 +397,17 @@
             </div>
             <div class="action-icons">
               <button
-                class="square-button gradient-icon text-white flex items-center justify-center hover-shadow"
+                class="square-button text-white flex items-center justify-center hover-shadow"
               >
                 <i class="fas fa-edit"></i>
               </button>
               <button
-                class="square-button gradient-icon text-white flex items-center justify-center hover-shadow"
+                class="square-button text-white flex items-center justify-center hover-shadow"
               >
                 <i class="fas fa-trash-alt"></i>
               </button>
               <button
-                class="square-button gradient-icon text-white flex items-center justify-center hover-shadow"
+                class="square-button text-white flex items-center justify-center hover-shadow"
               >
                 <i class="fas fa-sync-alt"></i>
               </button>
@@ -443,17 +449,17 @@
             </div>
             <div class="action-icons">
               <button
-                class="square-button gradient-icon text-white flex items-center justify-center hover-shadow"
+                class="square-button text-white flex items-center justify-center hover-shadow"
               >
                 <i class="fas fa-edit"></i>
               </button>
               <button
-                class="square-button gradient-icon text-white flex items-center justify-center hover-shadow"
+                class="square-button text-white flex items-center justify-center hover-shadow"
               >
                 <i class="fas fa-trash-alt"></i>
               </button>
               <button
-                class="square-button gradient-icon text-white flex items-center justify-center hover-shadow"
+                class="square-button text-white flex items-center justify-center hover-shadow"
               >
                 <i class="fas fa-sync-alt"></i>
               </button>
@@ -494,22 +500,27 @@
             </div>
             <div class="action-icons">
               <button
-                class="square-button gradient-icon text-white flex items-center justify-center hover-shadow"
+                class="square-button text-white flex items-center justify-center hover-shadow"
               >
                 <i class="fas fa-edit"></i>
               </button>
               <button
-                class="square-button gradient-icon text-white flex items-center justify-center hover-shadow"
+                class="square-button text-white flex items-center justify-center hover-shadow"
               >
                 <i class="fas fa-trash-alt"></i>
               </button>
               <button
-                class="square-button gradient-icon text-white flex items-center justify-center hover-shadow"
+                class="square-button text-white flex items-center justify-center hover-shadow"
               >
                 <i class="fas fa-sync-alt"></i>
               </button>
             </div>
           </div>
+        </div>
+
+        <!-- Developer Credits -->
+        <div class="developer-credits">
+          Desenvolvido por [Vanrley Macedo]
         </div>
 
         <!-- Versão do sistema -->
@@ -526,6 +537,7 @@
           parentDropdown.classList.toggle("active");
         });
       });
+
 
       // Toggle Fullscreen
       const fullscreenToggle = document.getElementById("fullscreenToggle");
