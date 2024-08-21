@@ -16,7 +16,7 @@
     />
     <!-- Google Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css?family=Manrope:500,600,700,800&amp;display=swap"
       rel="stylesheet"
     />
     <!-- SortableJS -->
@@ -35,13 +35,55 @@
       }
 
       body {
-        font-family: "Poppins", sans-serif !important;
+        font-family: Manrope, sans-serif !important;
         background-color: var(--primary-bg);
       }
 
       .hover-shadow:hover {
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         transition: all 0.2s ease-in-out;
+      }
+
+      /* Ajustes gerais de cores e bordas */
+      .bg-blue-custom {
+        background-color: var(--secondary-bg);
+        color: var(--sidebar-text-color);
+        padding: 1.5rem; /* Maior espaçamento interno */
+        border-radius: 0.75rem; /* Bordas mais arredondadas */
+      }
+
+      .form-input,
+      .form-select {
+        background-color: #f3f4f6;
+        border: 1px solid #94a3b8;
+        color: var(--text-color);
+        padding: 0.75rem; /* Aumentado o padding */
+        border-radius: 0.375rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        width: 100%; /* Para garantir responsividade */
+      }
+
+      .form-input:focus,
+      .form-select:focus {
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.5);
+      }
+
+      /* Adiciona margem superior maior ao container do filtro para separá-lo dos containers acima */
+      .filtros-container {
+        margin-top: 4rem !important; /* Aumenta a margem superior */
+      }
+
+      /* Ajusta a cor do ícone do botão de filtrar para branco */
+      button.bg-green-500 i {
+        color: #ffffff;
+      }
+
+      @media (max-width: 768px) {
+        .filtros-container {
+          grid-template-columns: 1fr;
+          gap: 0.5rem;
+        }
       }
 
       /* Adiciona estilo para garantir que os itens do dropdown fiquem em uma coluna vertical */
@@ -470,6 +512,77 @@
                 class="square-button text-white flex items-center justify-center hover-shadow"
               >
                 <i class="fas fa-sync-alt"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filtros Section -->
+        <div
+          class="bg-blue-custom p-4 mb-6 rounded-md shadow-lg filtros-container"
+        >
+          <h2 class="text-2xl font-semibold text-white mb-4">
+            Filtrar Programação
+          </h2>
+          <div
+            class="p-4 bg-gray-200 rounded-md flex flex-wrap items-center justify-between space-y-4 md:space-y-0"
+          >
+            <!-- Data Inicial -->
+            <div class="flex items-center space-x-2">
+              <i class="fas fa-calendar-alt text-gray-600"></i>
+              <input
+                type="date"
+                class="form-input"
+                placeholder="Data Inicial"
+              />
+            </div>
+
+            <!-- Data Final -->
+            <div class="flex items-center space-x-2">
+              <i class="fas fa-calendar-alt text-gray-600"></i>
+              <input type="date" class="form-input" placeholder="Data Final" />
+            </div>
+
+            <!-- HP -->
+            <div class="flex items-center space-x-2">
+              <i class="fas fa-clock text-gray-600"></i>
+              <input type="text" class="form-input" placeholder="HP" />
+            </div>
+
+            <!-- 8,48 -->
+            <div class="flex items-center space-x-2">
+              <i class="fas fa-hourglass-half text-gray-600"></i>
+              <input type="text" class="form-input" placeholder="8,48" />
+            </div>
+
+            <!-- Classificação -->
+            <div class="flex items-center space-x-2">
+              <i class="fas fa-list-alt text-gray-600"></i>
+              <select class="form-select">
+                <option>Classificação</option>
+                <option>Opção 1</option>
+                <option>Opção 2</option>
+                <option>Opção 3</option>
+              </select>
+            </div>
+
+            <!-- Execução -->
+            <div class="flex items-center space-x-2">
+              <i class="fas fa-cogs text-gray-600"></i>
+              <select class="form-select">
+                <option>Execução</option>
+                <option>Executando</option>
+                <option>Pendente</option>
+                <option>Finalizado</option>
+              </select>
+            </div>
+
+            <!-- Botão de Filtrar -->
+            <div class="flex items-center">
+              <button
+                class="bg-green-500 text-white p-2 rounded-md hover:bg-green-600"
+              >
+                <i class="fas fa-filter"></i> Filtrar
               </button>
             </div>
           </div>
