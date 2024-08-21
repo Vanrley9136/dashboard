@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Moderno</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-..."
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --sidebar-bg: #2b3a42; /* Fundo azul petróleo para o sidebar */
+        --sidebar-text-color: #f4f4f9; /* Texto claro para contraste */
+        --primary-bg: #f7f8fa; /* Fundo principal claro e suave */
+        --secondary-bg: #3b4f5c; /* Cinza escuro para contrastar com o fundo */
+        --icon-color: #c3cfd9; /* Ícones em tons suaves */
+        --text-color: #2e3a42; /* Texto em tons médios para legibilidade */
+        --header-bg: #ffffff; /* Fundo branco para o cabeçalho */
+        --accent-color: #e3b341; /* Dourado para detalhes de destaque */
+      }
+
+      /* Custom Scrollbar for Sidebar */
+      .sidebar::-webkit-scrollbar {
+        width: 6px;
+      }
+      .sidebar::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 3px;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif !important;
+        background-color: var(--primary-bg); /* Fundo principal claro */
+      }
+
+      /* Hover effects */
+      .hover-shadow:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        transition: all 0.2s ease-in-out;
+      }
+
+      /* Animation */
+      .slide-in {
+        animation: slideIn 0.5s forwards;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* Square Buttons */
+      .square-button {
+        width: 50px;
+        height: 50px;
+        background-color: var(--accent-color); /* Dourado para botões de ação */
+        color: var(--sidebar-text-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease;
+      }
+
+      .square-button:hover {
+        background-color: #d1a134; /* Dourado mais escuro ao passar o mouse */
+      }
+
+      /* Custom Sidebar Background */
+      .sidebar {
+        background: var(--sidebar-bg);
+        color: var(--sidebar-text-color);
+        transition: width 0.3s ease;
+        width: 16rem; /* Largura do sidebar expandido */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .sidebar-collapsed {
+        width: 4rem; /* Largura quando o sidebar está colapsado */
+      }
+
+      .sidebar a {
+        color: var(--sidebar-text-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 3rem; /* Fixar a altura para alinhar os ícones */
+        padding: 0 1rem;
+        font-weight: 500;
+      }
+
+      .sidebar a:hover {
+        background-color: var(--accent-color); /* Dourado para hover */
+        border-radius: 4px;
+      }
+
+      .sidebar i {
+        color: var(--icon-color);
+      }
+
+      /* Primary background for other sections */
+      .bg-blue-custom {
+        background-color: var(--secondary-bg);
+        color: var(
+          --sidebar-text-color
+        ); /* Texto claro para seções secundárias */
+      }
+
+      /* Positioning icons outside the container */
+      .action-icons {
+        position: relative;
+        margin-top: -70px; /* Aumenta a margem para posicionar os ícones mais abaixo */
+        padding-top: 80px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      /* Sidebar modern transition */
+      .sidebar-collapsed {
+        width: 4rem; /* Largura quando o sidebar está colapsado */
+      }
+
+      /* Fullscreen button styles */
+      .fullscreen-btn {
+        cursor: pointer;
+        padding: 0.5rem;
+        background-color: var(--header-bg);
+        border-radius: 50%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        color: var(--accent-color);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .fullscreen-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .sidebar-text {
+        display: inline-block;
+        white-space: nowrap;
+        margin-left: 0.5rem;
+      }
+
+      .sidebar-collapsed .sidebar-text {
+        display: none; /* Esconde o texto quando colapsado */
+      }
+
+      .sidebar .sidebar-icon {
+        margin-right: 1rem;
+      }
+
+      /* Version Style */
+      .version {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        padding: 5px 10px;
+        background: var(--accent-color);
+        border-radius: 5px;
+        color: var(--header-bg); /* Cor clara para o texto da versão */
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      /* Dropdown styles */
+      .dropdown-menu {
+        display: none;
+        flex-direction: column;
+        margin-top: 0.5rem;
+        padding-left: 1.5rem;
+      }
+
+      .dropdown.active .dropdown-menu {
+        display: flex;
+      }
+
+      .dropdown-menu a {
+        padding: 0.5rem 1rem;
+        color: var(--sidebar-text-color);
+        border-radius: 0.25rem;
+        transition: background-color 0.2s ease-in-out;
+      }
+
+      .dropdown-menu a:hover {
+        background-color: var(--accent-color);
+      }
+
+      .dropdown-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .dropdown-toggle i {
+        transition: transform 0.3s ease;
+      }
+
+      .dropdown.active .dropdown-toggle i {
+        transform: rotate(180deg);
+      }
+
+      /* Text color adjustments */
+      .text-gray-600 {
+        color: var(--text-color); /* Cor escura para o texto principal */
+      }
+
+      .bg-white {
+        background-color: var(--header-bg); /* Fundo claro para os containers */
+      }
+    </style>
+  </head>
+  <body class="font-poppins bg-gradient-to-r from-gray-100 to-blue-50">
+    <!-- Wrapper -->
+    <div class="flex h-screen">
+      <!-- Sidebar -->
+      <aside id="sidebar" class="sidebar flex-shrink-0 border-r">
+        <div>
+          <!-- Navigation -->
+          <nav class="overflow-y-auto p-4">
+            <ul id="sidebarMenu" class="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  class="p-3 text-white hover:bg-blue-500 rounded-md transition-colors hover-shadow"
+                >
+                  <i class="fas fa-home text-lg sidebar-icon"></i>
+                  <span class="sidebar-text text-md">Dashboard</span>
+                </a>
+              </li>
+              <li class="dropdown">
+                <a
+                  href="#"
+                  class="p-3 text-white hover:bg-blue-500 rounded-md transition-colors hover-shadow dropdown-toggle"
+                >
+                  <div>
+                    <i class="fas fa-calendar-alt text-lg sidebar-icon"></i>
+                    <span class="sidebar-text text-md">Calendário</span>
+                  </div>
+                  <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-menu">
+                  <a href="#">Eventos</a>
+                  <a href="#">Agendas</a>
+                </div>
+              </li>
+              <li class="dropdown">
+                <a
+                  href="#"
+                  class="p-3 text-white hover:bg-blue-500 rounded-md transition-colors hover-shadow dropdown-toggle"
+                >
+                  <div>
+                    <i class="fas fa-users text-lg sidebar-icon"></i>
+                    <span class="sidebar-text text-md">Colaboradores</span>
+                  </div>
+                  <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-menu">
+                  <a href="#">Gerenciar</a>
+                  <a href="#">Adicionar Novo</a>
+                </div>
+              </li>
+              <li class="dropdown">
+                <a
+                  href="#"
+                  class="p-3 text-white hover:bg-blue-500 rounded-md transition-colors hover-shadow dropdown-toggle"
+                >
+                  <div>
+                    <i class="fas fa-tasks text-lg sidebar-icon"></i>
+                    <span class="sidebar-text text-md">Projetos</span>
+                  </div>
+                  <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-menu">
+                  <a href="#">Atuais</a>
+                  <a href="#">Finalizados</a>
+                </div>
+              </li>
+              <li class="dropdown">
+                <a
+                  href="#"
+                  class="p-3 text-white hover:bg-blue-500 rounded-md transition-colors hover-shadow dropdown-toggle"
+                >
+                  <div>
+                    <i class="fas fa-cog text-lg sidebar-icon"></i>
+                    <span class="sidebar-text text-md">Configurações</span>
+                  </div>
+                  <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-menu">
+                  <a href="#">Preferências</a>
+                  <a href="#">Segurança</a>
+                </div>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <!-- Footer -->
+        <div class="p-4 border-t border-gray-200">
+          <a
+            href="#"
+            class="p-3 text-white hover:text-red-600 transition-colors hover-shadow"
+          >
+            <i class="fas fa-sign-out-alt text-lg sidebar-icon"></i>
+            <span class="sidebar-text text-md">Sair</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="flex-1 p-6 overflow-y-auto">
+        <!-- Header -->
+        <header
+          class="flex items-center justify-between mb-6 bg-blue-custom p-4 rounded-md shadow-lg"
+        >
+          <h1 class="text-3xl font-bold">Auditoria - Programação</h1>
+          <div class="flex items-center space-x-4">
+            <span class="text-white text-lg font-semibold">Moore</span>
+            <button id="fullscreenToggle" class="fullscreen-btn">
+              <i class="fa-solid fa-expand"></i>
+            </button>
+            <button
+              class="p-2 bg-white border rounded-full shadow-sm hover:bg-gray-100 hover-shadow"
+            >
+              <i class="fas fa-bell text-gray-600"></i>
+            </button>
+            <div class="flex items-center space-x-2">
+              <img
+                src="https://cdn3d.iconscout.com/3d/premium/thumb/verified-user-5179177-4347123.png"
+                alt="User Avatar"
+                class="w-10 h-10 rounded-full"
+              />
+            </div>
+          </div>
+        </header>
+
+        <!-- Tables Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Tabela 1: Detalhes da Programação -->
+          <div class="bg-white p-6 rounded-lg shadow-lg hover-shadow">
+            <div
+              class="flex items-center justify-between mb-4 bg-blue-custom p-2 rounded-md shadow"
+            >
+              <h2 class="text-xl font-semibold">Detalhes da Programação</h2>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="min-w-full table-auto">
+                <thead>
+                  <tr
+                    class="bg-blue-custom text-white uppercase text-sm leading-normal"
+                  >
+                    <th class="py-3 px-6 text-left">Ficha</th>
+                    <th class="py-3 px-6 text-left">Cliente</th>
+                    <th class="py-3 px-6 text-left">Filial de Execução</th>
+                    <th class="py-3 px-6 text-center">ID</th>
+                  </tr>
+                </thead>
+                <tbody class="text-gray-600 text-sm font-light">
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      0042/2024
+                    </td>
+                    <td class="py-3 px-6 text-left">FRACHT</td>
+                    <td class="py-3 px-6 text-left">FRACHT</td>
+                    <td class="py-3 px-6 text-center">22460</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="action-icons">
+              <button
+                class="square-button gradient-icon text-white flex items-center justify-center hover-shadow"
+              >
+                <i class="fas fa-edit"></i>
+              </button>
+              <button
+                class="square-button gradient-icon text-white flex items-center justify-center hover-shadow"
+              >
+                <i class="fas fa-trash-alt"></i>
+              </button>
+              <button
+                class="square-button gradient-icon text-white flex items-center justify-center hover-shadow"
+              >
+                <i class="fas fa-sync-alt"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Tabela 2: Recursos Contratados -->
+          <div class="bg-white p-6 rounded-lg shadow-lg hover-shadow">
+            <div
+              class="flex items-center justify-between mb-4 bg-blue-custom p-2 rounded-md shadow"
+            >
+              <h2 class="text-xl font-semibold">Recursos Contratados</h2>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="min-w-full table-auto">
+                <thead>
+                  <tr
+                    class="bg-blue-custom text-white uppercase text-sm leading-normal"
+                  >
+                    <th class="py-3 px-6 text-left">Cargo</th>
+                    <th class="py-3 px-6 text-center">Qt.Func.</th>
+                    <th class="py-3 px-6 text-center">Tipo</th>
+                    <th class="py-3 px-6 text-center">HI</th>
+                    <th class="py-3 px-6 text-center">HE</th>
+                  </tr>
+                </thead>
+                <tbody class="text-gray-600 text-sm font-light">
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      Sênior
+                    </td>
+                    <td class="py-3 px-6 text-center">1</td>
+                    <td class="py-3 px-6 text-center">Normal</td>
+                    <td class="py-3 px-6 text-center">0</td>
+                    <td class="py-3 px-6 text-center">0</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="action-icons">
+              <button
+                class="square-button gradient-icon text-white flex items-center justify-center hover-shadow"
+              >
+                <i class="fas fa-edit"></i>
+              </button>
+              <button
+                class="square-button gradient-icon text-white flex items-center justify-center hover-shadow"
+              >
+                <i class="fas fa-trash-alt"></i>
+              </button>
+              <button
+                class="square-button gradient-icon text-white flex items-center justify-center hover-shadow"
+              >
+                <i class="fas fa-sync-alt"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Tabela 3: Recursos Alocados -->
+          <div class="bg-white p-6 rounded-lg shadow-lg hover-shadow">
+            <div
+              class="flex items-center justify-between mb-4 bg-blue-custom p-2 rounded-md shadow"
+            >
+              <h2 class="text-xl font-semibold">Recursos Alocados</h2>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="min-w-full table-auto">
+                <thead>
+                  <tr
+                    class="bg-blue-custom text-white uppercase text-sm leading-normal"
+                  >
+                    <th class="py-3 px-6 text-left">Nome</th>
+                    <th class="py-3 px-6 text-center">Apoio</th>
+                  </tr>
+                </thead>
+                <tbody class="text-gray-600 text-sm font-light">
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      Julia Emily Souza da Silva - Trainee
+                    </td>
+                    <td class="py-3 px-6 text-center">
+                      <input
+                        type="checkbox"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="action-icons">
+              <button
+                class="square-button gradient-icon text-white flex items-center justify-center hover-shadow"
+              >
+                <i class="fas fa-edit"></i>
+              </button>
+              <button
+                class="square-button gradient-icon text-white flex items-center justify-center hover-shadow"
+              >
+                <i class="fas fa-trash-alt"></i>
+              </button>
+              <button
+                class="square-button gradient-icon text-white flex items-center justify-center hover-shadow"
+              >
+                <i class="fas fa-sync-alt"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Versão do sistema -->
+        <div class="version">Versão 1.0.0</div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+      // Toggle Dropdowns
+      document.querySelectorAll(".dropdown-toggle").forEach((toggle) => {
+        toggle.addEventListener("click", function () {
+          const parentDropdown = this.parentElement;
+          parentDropdown.classList.toggle("active");
+        });
+      });
+
+      // Toggle Fullscreen
+      const fullscreenToggle = document.getElementById("fullscreenToggle");
+
+      fullscreenToggle.addEventListener("click", () => {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen();
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
