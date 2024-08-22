@@ -384,6 +384,29 @@
             background-color: #059669;
             /* Verde mais escuro no hover */
         }
+        .table-container {
+    max-height: 300px; /* Define a altura máxima do container da tabela */
+    overflow-y: auto; /* Ativa o scroll vertical se a altura exceder o limite */
+    overflow-x: auto; /* Ativa o scroll horizontal */
+    margin-bottom: 20px; /* Espaço extra abaixo da tabela */
+}
+
+.table-auto thead th:first-child,
+.table-auto tbody td:first-child {
+    width: 40px; /* Largura fixa para a coluna dos ícones */
+    text-align: center;
+    padding: 8px;
+}
+
+.table-auto tbody td i {
+    font-size: 1.25rem; /* Tamanho do ícone */
+    color: #3b82f6; /* Cor do ícone, pode ser ajustada conforme necessário */
+}
+
+.table-auto tbody tr:hover td i {
+    color: #2563eb; /* Cor do ícone no hover */
+}
+
     </style>
 </head>
 
@@ -521,7 +544,7 @@
   <tbody class="text-gray-600 text-sm font-light">
     <tr class="border-b border-gray-200 hover:bg-gray-100">
       <td class="py-3 px-6 text-center">
-        <i class="fas fa-info-circle text-green-500"></i> <!-- Ícone de informação -->
+        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
       </td>
       <td class="py-3 px-6 text-left whitespace-nowrap">0044/2024</td>
       <td class="py-3 px-6 text-left">CORPTECH</td>
@@ -530,87 +553,17 @@
     </tr>
     <tr class="border-b border-gray-200 hover:bg-gray-100">
       <td class="py-3 px-6 text-center">
-        <i class="fas fa-info-circle text-green-500"></i> <!-- Ícone de informação -->
+        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
       </td>
       <td class="py-3 px-6 text-left whitespace-nowrap">0045/2024</td>
       <td class="py-3 px-6 text-left">ALPHALOGIC</td>
       <td class="py-3 px-6 text-left">ALPHALOGIC</td>
       <td class="py-3 px-6 text-center">22463</td>
     </tr>
-    <tr class="border-b border-gray-200 hover:bg-gray-100">
-      <td class="py-3 px-6 text-center">
-        <i class="fas fa-info-circle text-green-500"></i> <!-- Ícone de informação -->
-      </td>
-      <td class="py-3 px-6 text-left whitespace-nowrap">0046/2024</td>
-      <td class="py-3 px-6 text-left">MEGASTAR</td>
-      <td class="py-3 px-6 text-left">MEGASTAR</td>
-      <td class="py-3 px-6 text-center">22464</td>
-    </tr>
-    <tr class="border-b border-gray-200 hover:bg-gray-100">
-      <td class="py-3 px-6 text-center">
-        <i class="fas fa-info-circle text-green-500"></i> <!-- Ícone de informação -->
-      </td>
-      <td class="py-3 px-6 text-left whitespace-nowrap">0047/2024</td>
-      <td class="py-3 px-6 text-left">TECHNOW</td>
-      <td class="py-3 px-6 text-left">TECHNOW</td>
-      <td class="py-3 px-6 text-center">22465</td>
-    </tr>
-    <tr class="border-b border-gray-200 hover:bg-gray-100">
-      <td class="py-3 px-6 text-center">
-        <i class="fas fa-info-circle text-green-500"></i> <!-- Ícone de informação -->
-      </td>
-      <td class="py-3 px-6 text-left whitespace-nowrap">0048/2024</td>
-      <td class="py-3 px-6 text-left">NEXUS</td>
-      <td class="py-3 px-6 text-left">NEXUS</td>
-      <td class="py-3 px-6 text-center">22466</td>
-    </tr>
-    <tr class="border-b border-gray-200 hover:bg-gray-100">
-      <td class="py-3 px-6 text-center">
-        <i class="fas fa-info-circle text-green-500"></i> <!-- Ícone de informação -->
-      </td>
-      <td class="py-3 px-6 text-left whitespace-nowrap">0049/2024</td>
-      <td class="py-3 px-6 text-left">OMNI</td>
-      <td class="py-3 px-6 text-left">OMNI</td>
-      <td class="py-3 px-6 text-center">22467</td>
-    </tr>
-    <tr class="border-b border-gray-200 hover:bg-gray-100">
-      <td class="py-3 px-6 text-center">
-        <i class="fas fa-info-circle text-green-500"></i> <!-- Ícone de informação -->
-      </td>
-      <td class="py-3 px-6 text-left whitespace-nowrap">0050/2024</td>
-      <td class="py-3 px-6 text-left">STRATOS</td>
-      <td class="py-3 px-6 text-left">STRATOS</td>
-      <td class="py-3 px-6 text-center">22468</td>
-    </tr>
-    <tr class="border-b border-gray-200 hover:bg-gray-100">
-      <td class="py-3 px-6 text-center">
-        <i class="fas fa-info-circle text-green-500"></i> <!-- Ícone de informação -->
-      </td>
-      <td class="py-3 px-6 text-left whitespace-nowrap">0051/2024</td>
-      <td class="py-3 px-6 text-left">ZEUS</td>
-      <td class="py-3 px-6 text-left">ZEUS</td>
-      <td class="py-3 px-6 text-center">22469</td>
-    </tr>
-    <tr class="border-b border-gray-200 hover:bg-gray-100">
-      <td class="py-3 px-6 text-center">
-        <i class="fas fa-info-circle text-green-500"></i> <!-- Ícone de informação -->
-      </td>
-      <td class="py-3 px-6 text-left whitespace-nowrap">0052/2024</td>
-      <td class="py-3 px-6 text-left">NEBULA</td>
-      <td class="py-3 px-6 text-left">NEBULA</td>
-      <td class="py-3 px-6 text-center">22470</td>
-    </tr>
-    <tr class="border-b border-gray-200 hover:bg-gray-100">
-      <td class="py-3 px-6 text-center">
-        <i class="fas fa-info-circle text-green-500"></i> <!-- Ícone de informação -->
-      </td>
-      <td class="py-3 px-6 text-left whitespace-nowrap">0053/2024</td>
-      <td class="py-3 px-6 text-left">QUASAR</td>
-      <td class="py-3 px-6 text-left">QUASAR</td>
-      <td class="py-3 px-6 text-center">22471</td>
-    </tr>
+    <!-- Adicione mais linhas conforme necessário -->
   </tbody>
 </table>
+
 
 
                     </div>
