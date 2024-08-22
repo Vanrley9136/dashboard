@@ -800,6 +800,57 @@
                 </div>
             </div>
 
+            <!-- Adicionando o cronograma no corpo do HTML -->
+<div class="flex-1 p-6 overflow-y-auto">
+    <!-- Seção do Cronograma -->
+    <div class="card-content mb-6">
+        <div class="flex items-center justify-between mb-4 bg-blue-custom p-2 rounded-md shadow">
+            <i class="fas fa-calendar-alt drag-handle"></i> <!-- Ícone de calendário -->
+            <h2 class="text-xl text-white">Cronograma de Atividades</h2>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="min-w-full table-auto">
+                <thead>
+                    <tr class="bg-blue-custom text-white uppercase text-sm leading-normal">
+                        <th class="py-3 px-6 text-left">Data</th>
+                        <th class="py-3 px-6 text-left">Atividade</th>
+                        <th class="py-3 px-6 text-center">Responsável</th>
+                        <th class="py-3 px-6 text-center">Status</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-600 text-sm font-light">
+                    <tr class="border-b border-gray-200 hover:bg-gray-100">
+                        <td class="py-3 px-6 text-left whitespace-nowrap">01/09/2024</td>
+                        <td class="py-3 px-6 text-left">Planejamento Inicial</td>
+                        <td class="py-3 px-6 text-center">Equipe A</td>
+                        <td class="py-3 px-6 text-center">
+                            <span class="bg-yellow-500 text-white text-xs font-semibold px-2 py-1 rounded-full">Em Andamento</span>
+                        </td>
+                    </tr>
+                    <tr class="border-b border-gray-200 hover:bg-gray-100">
+                        <td class="py-3 px-6 text-left whitespace-nowrap">15/09/2024</td>
+                        <td class="py-3 px-6 text-left">Desenvolvimento do Projeto</td>
+                        <td class="py-3 px-6 text-center">Equipe B</td>
+                        <td class="py-3 px-6 text-center">
+                            <span class="bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded-full">Concluído</span>
+                        </td>
+                    </tr>
+                    <tr class="border-b border-gray-200 hover:bg-gray-100">
+                        <td class="py-3 px-6 text-left whitespace-nowrap">30/09/2024</td>
+                        <td class="py-3 px-6 text-left">Teste e Validação</td>
+                        <td class="py-3 px-6 text-center">Equipe C</td>
+                        <td class="py-3 px-6 text-center">
+                            <span class="bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-full">Atrasado</span>
+                        </td>
+                    </tr>
+                    <!-- Mais linhas podem ser adicionadas conforme necessário -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+            
             <!-- Filtros Section -->
             <div class="bg-blue-custom p-4 mb-6 rounded-md shadow-lg filtros-container">
                 <h2 class="text-2xl  text-white mb-4">
