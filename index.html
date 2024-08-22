@@ -350,6 +350,39 @@
         background-color: white;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
+
+      /* Estilos dos botões de ação */
+
+/* Botão de editar (azul) */
+.square-button.edit {
+    background-color: #3b82f6; /* Azul */
+    color: #ffffff;
+}
+
+.square-button.edit:hover {
+    background-color: #2563eb; /* Azul mais escuro no hover */
+}
+
+/* Botão de deletar (vermelho) */
+.square-button.delete {
+    background-color: #ef4444; /* Vermelho */
+    color: #ffffff;
+}
+
+.square-button.delete:hover {
+    background-color: #dc2626; /* Vermelho mais escuro no hover */
+}
+
+/* Botão de sincronizar (verde) */
+.square-button.sync {
+    background-color: #10b981; /* Verde */
+    color: #ffffff;
+}
+
+.square-button.sync:hover {
+    background-color: #059669; /* Verde mais escuro no hover */
+}
+
     </style>
   </head>
   <body class="font-poppins">
@@ -565,23 +598,18 @@
                 </tbody>
               </table>
             </div>
-            <div class="action-icons">
-              <button
-                class="square-button text-white flex items-center justify-center hover-shadow"
-              >
-                <i class="fas fa-edit"></i>
-              </button>
-              <button
-                class="square-button text-white flex items-center justify-center hover-shadow"
-              >
-                <i class="fas fa-trash-alt"></i>
-              </button>
-              <button
-                class="square-button text-white flex items-center justify-center hover-shadow"
-              >
-                <i class="fas fa-sync-alt"></i>
-              </button>
-            </div>
+           <div class="action-icons">
+    <button class="square-button edit">
+        <i class="fas fa-edit"></i>
+    </button>
+    <button class="square-button delete">
+        <i class="fas fa-trash-alt"></i>
+    </button>
+    <button class="square-button sync">
+        <i class="fas fa-sync-alt"></i>
+    </button>
+</div>
+
           </div>
 
           <!-- Tabela 2: Recursos Contratados -->
