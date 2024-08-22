@@ -223,17 +223,17 @@
             min-height: 100px;
         }
 
-     .clock {
-    font-size: 1.75rem;
-    color: rgb(141 0 255);
-    font-weight: 700;
-    text-align: center;
-    background-color: #e2e8f0;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-}
+        .clock {
+            font-size: 1.75rem;
+            color: rgb(141 0 255);
+            font-weight: 700;
+            text-align: center;
+            background-color: #e2e8f0;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
 
         header {
             position: sticky;
@@ -384,29 +384,37 @@
             background-color: #059669;
             /* Verde mais escuro no hover */
         }
+
         .table-container {
-    max-height: 300px; /* Define a altura máxima do container da tabela */
-    overflow-y: auto; /* Ativa o scroll vertical se a altura exceder o limite */
-    overflow-x: auto; /* Ativa o scroll horizontal */
-    margin-bottom: 20px; /* Espaço extra abaixo da tabela */
-}
+            max-height: 300px;
+            /* Define a altura máxima do container da tabela */
+            overflow-y: auto;
+            /* Ativa o scroll vertical se a altura exceder o limite */
+            overflow-x: auto;
+            /* Ativa o scroll horizontal */
+            margin-bottom: 20px;
+            /* Espaço extra abaixo da tabela */
+        }
 
-.table-auto thead th:first-child,
-.table-auto tbody td:first-child {
-    width: 40px; /* Largura fixa para a coluna dos ícones */
-    text-align: center;
-    padding: 8px;
-}
+        .table-auto thead th:first-child,
+        .table-auto tbody td:first-child {
+            width: 40px;
+            /* Largura fixa para a coluna dos ícones */
+            text-align: center;
+            padding: 8px;
+        }
 
-.table-auto tbody td i {
-    font-size: 1.25rem; /* Tamanho do ícone */
-    color: #3b82f6; /* Cor do ícone, pode ser ajustada conforme necessário */
-}
+        .table-auto tbody td i {
+            font-size: 1.25rem;
+            /* Tamanho do ícone */
+            color: #3b82f6;
+            /* Cor do ícone, pode ser ajustada conforme necessário */
+        }
 
-.table-auto tbody tr:hover td i {
-    color: #2563eb; /* Cor do ícone no hover */
-}
-
+        .table-auto tbody tr:hover td i {
+            color: #2563eb;
+            /* Cor do ícone no hover */
+        }
     </style>
 </head>
 
@@ -531,64 +539,64 @@
                         <h2 class="text-xl text-white">Detalhes da Programação</h2>
                     </div>
                     <div class="overflow-x-auto">
-<table class="min-w-full table-auto">
-  <thead>
-    <tr class="bg-blue-custom text-white uppercase text-sm leading-normal">
-      <th class="py-3 px-6 text-center"></th>
-      <th class="py-3 px-6 text-left">Ficha</th>
-      <th class="py-3 px-6 text-left">Cliente</th>
-      <th class="py-3 px-6 text-left">Filial de Execução</th>
-      <th class="py-3 px-6 text-center">ID</th>
-    </tr>
-  </thead>
-  <tbody class="text-gray-600 text-sm font-light">
-    <tr class="border-b border-gray-200 hover:bg-gray-100">
-      <td class="py-3 px-6 text-center">
-        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-      </td>
-      <td class="py-3 px-6 text-left whitespace-nowrap">0044/2024</td>
-      <td class="py-3 px-6 text-left">CORPTECH</td>
-      <td class="py-3 px-6 text-left">CORPTECH</td>
-      <td class="py-3 px-6 text-center">22462</td>
-    </tr>
-    <tr class="border-b border-gray-200 hover:bg-gray-100">
-      <td class="py-3 px-6 text-center">
-        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-      </td>
-      <td class="py-3 px-6 text-left whitespace-nowrap">0045/2024</td>
-      <td class="py-3 px-6 text-left">ALPHALOGIC</td>
-      <td class="py-3 px-6 text-left">ALPHALOGIC</td>
-      <td class="py-3 px-6 text-center">22463</td>
-    </tr>
-    <tr class="border-b border-gray-200 hover:bg-gray-100">
-      <td class="py-3 px-6 text-center">
-        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-      </td>
-      <td class="py-3 px-6 text-left whitespace-nowrap">0046/2024</td>
-      <td class="py-3 px-6 text-left">MEGASTAR</td>
-      <td class="py-3 px-6 text-left">MEGASTAR</td>
-      <td class="py-3 px-6 text-center">22464</td>
-    </tr>
-    <tr class="border-b border-gray-200 hover:bg-gray-100">
-      <td class="py-3 px-6 text-center">
-        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-      </td>
-      <td class="py-3 px-6 text-left whitespace-nowrap">0047/2024</td>
-      <td class="py-3 px-6 text-left">TECHNOW</td>
-      <td class="py-3 px-6 text-left">TECHNOW</td>
-      <td class="py-3 px-6 text-center">22465</td>
-    </tr>
-    <tr class="border-b border-gray-200 hover:bg-gray-100">
-      <td class="py-3 px-6 text-center">
-        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-      </td>
-      <td class="py-3 px-6 text-left whitespace-nowrap">0048/2024</td>
-      <td class="py-3 px-6 text-left">NEXUS</td>
-      <td class="py-3 px-6 text-left">NEXUS</td>
-      <td class="py-3 px-6 text-center">22466</td>
-    </tr>
-  </tbody>
-</table>
+                        <table class="min-w-full table-auto">
+                            <thead>
+                                <tr class="bg-blue-custom text-white uppercase text-sm leading-normal">
+                                    <th class="py-3 px-6 text-center"></th>
+                                    <th class="py-3 px-6 text-left">Ficha</th>
+                                    <th class="py-3 px-6 text-left">Cliente</th>
+                                    <th class="py-3 px-6 text-left">Filial de Execução</th>
+                                    <th class="py-3 px-6 text-center">ID</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-600 text-sm font-light">
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="py-3 px-6 text-center">
+                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
+                                    </td>
+                                    <td class="py-3 px-6 text-left whitespace-nowrap">0044/2024</td>
+                                    <td class="py-3 px-6 text-left">CORPTECH</td>
+                                    <td class="py-3 px-6 text-left">CORPTECH</td>
+                                    <td class="py-3 px-6 text-center">22462</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="py-3 px-6 text-center">
+                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
+                                    </td>
+                                    <td class="py-3 px-6 text-left whitespace-nowrap">0045/2024</td>
+                                    <td class="py-3 px-6 text-left">ALPHALOGIC</td>
+                                    <td class="py-3 px-6 text-left">ALPHALOGIC</td>
+                                    <td class="py-3 px-6 text-center">22463</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="py-3 px-6 text-center">
+                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
+                                    </td>
+                                    <td class="py-3 px-6 text-left whitespace-nowrap">0046/2024</td>
+                                    <td class="py-3 px-6 text-left">MEGASTAR</td>
+                                    <td class="py-3 px-6 text-left">MEGASTAR</td>
+                                    <td class="py-3 px-6 text-center">22464</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="py-3 px-6 text-center">
+                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
+                                    </td>
+                                    <td class="py-3 px-6 text-left whitespace-nowrap">0047/2024</td>
+                                    <td class="py-3 px-6 text-left">TECHNOW</td>
+                                    <td class="py-3 px-6 text-left">TECHNOW</td>
+                                    <td class="py-3 px-6 text-center">22465</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="py-3 px-6 text-center">
+                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
+                                    </td>
+                                    <td class="py-3 px-6 text-left whitespace-nowrap">0048/2024</td>
+                                    <td class="py-3 px-6 text-left">NEXUS</td>
+                                    <td class="py-3 px-6 text-left">NEXUS</td>
+                                    <td class="py-3 px-6 text-center">22466</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
 
 
@@ -614,78 +622,78 @@
                         <h2 class="text-xl text-white">Recursos Contratados</h2>
                     </div>
                     <div class="overflow-x-auto">
-                      <table class="min-w-full table-auto">
-    <thead>
-        <tr class="bg-blue-custom text-white uppercase text-sm leading-normal">
-            <th class="py-3 px-6 text-center"></th> <!-- Coluna para o ícone -->
-            <th class="py-3 px-6 text-left">Cargo</th>
-            <th class="py-3 px-6 text-center">Qt.Func.</th>
-            <th class="py-3 px-6 text-center">Tipo</th>
-            <th class="py-3 px-6 text-center">HI</th>
-            <th class="py-3 px-6 text-center">HE</th>
-        </tr>
-    </thead>
-    <tbody class="text-gray-600 text-sm font-light">
-        <tr class="border-b border-gray-200 hover:bg-gray-100">
-            <td class="py-3 px-6 text-center">
-                <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-            </td>
-            <td class="py-3 px-6 text-left whitespace-nowrap">
-                Sênior
-            </td>
-            <td class="py-3 px-6 text-center">1</td>
-            <td class="py-3 px-6 text-center">Normal</td>
-            <td class="py-3 px-6 text-center">0</td>
-            <td class="py-3 px-6 text-center">0</td>
-        </tr>
-        <tr class="border-b border-gray-200 hover:bg-gray-100">
-            <td class="py-3 px-6 text-center">
-                <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-            </td>
-            <td class="py-3 px-6 text-left whitespace-nowrap">Pleno</td>
-            <td class="py-3 px-6 text-center">2</td>
-            <td class="py-3 px-6 text-center">Normal</td>
-            <td class="py-3 px-6 text-center">1</td>
-            <td class="py-3 px-6 text-center">2</td>
-        </tr>
-        <tr class="border-b border-gray-200 hover:bg-gray-100">
-            <td class="py-3 px-6 text-center">
-                <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-            </td>
-            <td class="py-3 px-6 text-left whitespace-nowrap">
-                Júnior
-            </td>
-            <td class="py-3 px-6 text-center">3</td>
-            <td class="py-3 px-6 text-center">Normal</td>
-            <td class="py-3 px-6 text-center">2</td>
-            <td class="py-3 px-6 text-center">3</td>
-        </tr>
-        <tr class="border-b border-gray-200 hover:bg-gray-100">
-            <td class="py-3 px-6 text-center">
-                <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-            </td>
-            <td class="py-3 px-6 text-left whitespace-nowrap">
-                Coordenador
-            </td>
-            <td class="py-3 px-6 text-center">1</td>
-            <td class="py-3 px-6 text-center">Especial</td>
-            <td class="py-3 px-6 text-center">0</td>
-            <td class="py-3 px-6 text-center">1</td>
-        </tr>
-        <tr class="border-b border-gray-200 hover:bg-gray-100">
-            <td class="py-3 px-6 text-center">
-                <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-            </td>
-            <td class="py-3 px-6 text-left whitespace-nowrap">
-                Estagiário
-            </td>
-            <td class="py-3 px-6 text-center">5</td>
-            <td class="py-3 px-6 text-center">Normal</td>
-            <td class="py-3 px-6 text-center">4</td>
-            <td class="py-3 px-6 text-center">5</td>
-        </tr>
-    </tbody>
-</table>
+                        <table class="min-w-full table-auto">
+                            <thead>
+                                <tr class="bg-blue-custom text-white uppercase text-sm leading-normal">
+                                    <th class="py-3 px-6 text-center"></th> <!-- Coluna para o ícone -->
+                                    <th class="py-3 px-6 text-left">Cargo</th>
+                                    <th class="py-3 px-6 text-center">Qt.Func.</th>
+                                    <th class="py-3 px-6 text-center">Tipo</th>
+                                    <th class="py-3 px-6 text-center">HI</th>
+                                    <th class="py-3 px-6 text-center">HE</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-600 text-sm font-light">
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="py-3 px-6 text-center">
+                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
+                                    </td>
+                                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                                        Sênior
+                                    </td>
+                                    <td class="py-3 px-6 text-center">1</td>
+                                    <td class="py-3 px-6 text-center">Normal</td>
+                                    <td class="py-3 px-6 text-center">0</td>
+                                    <td class="py-3 px-6 text-center">0</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="py-3 px-6 text-center">
+                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
+                                    </td>
+                                    <td class="py-3 px-6 text-left whitespace-nowrap">Pleno</td>
+                                    <td class="py-3 px-6 text-center">2</td>
+                                    <td class="py-3 px-6 text-center">Normal</td>
+                                    <td class="py-3 px-6 text-center">1</td>
+                                    <td class="py-3 px-6 text-center">2</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="py-3 px-6 text-center">
+                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
+                                    </td>
+                                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                                        Júnior
+                                    </td>
+                                    <td class="py-3 px-6 text-center">3</td>
+                                    <td class="py-3 px-6 text-center">Normal</td>
+                                    <td class="py-3 px-6 text-center">2</td>
+                                    <td class="py-3 px-6 text-center">3</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="py-3 px-6 text-center">
+                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
+                                    </td>
+                                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                                        Coordenador
+                                    </td>
+                                    <td class="py-3 px-6 text-center">1</td>
+                                    <td class="py-3 px-6 text-center">Especial</td>
+                                    <td class="py-3 px-6 text-center">0</td>
+                                    <td class="py-3 px-6 text-center">1</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="py-3 px-6 text-center">
+                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
+                                    </td>
+                                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                                        Estagiário
+                                    </td>
+                                    <td class="py-3 px-6 text-center">5</td>
+                                    <td class="py-3 px-6 text-center">Normal</td>
+                                    <td class="py-3 px-6 text-center">4</td>
+                                    <td class="py-3 px-6 text-center">5</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
                     </div>
                     <div class="action-icons">
@@ -709,72 +717,72 @@
                         <h2 class="text-xl text-white">Recursos Alocados</h2>
                     </div>
                     <div class="overflow-x-auto">
-   <table class="min-w-full table-auto">
-    <thead>
-        <tr class="bg-blue-custom text-white uppercase text-sm leading-normal">
-            <th class="py-3 px-6 text-center"></th> <!-- Coluna para o ícone -->
-            <th class="py-3 px-6 text-left">Nome</th>
-            <th class="py-3 px-6 text-center">Apoio</th>
-        </tr>
-    </thead>
-    <tbody class="text-gray-600 text-sm font-light">
-        <tr class="border-b border-gray-200 hover:bg-gray-100">
-            <td class="py-3 px-6 text-center">
-                <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-            </td>
-            <td class="py-3 px-6 text-left whitespace-nowrap">
-                Julia Emily Souza da Silva - Trainee
-            </td>
-            <td class="py-3 px-6 text-center">
-                <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" />
-            </td>
-        </tr>
-        <tr class="border-b border-gray-200 hover:bg-gray-100">
-            <td class="py-3 px-6 text-center">
-                <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-            </td>
-            <td class="py-3 px-6 text-left whitespace-nowrap">
-                Lucas Gabriel Oliveira - Analista Júnior
-            </td>
-            <td class="py-3 px-6 text-center">
-                <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" />
-            </td>
-        </tr>
-        <tr class="border-b border-gray-200 hover:bg-gray-100">
-            <td class="py-3 px-6 text-center">
-                <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-            </td>
-            <td class="py-3 px-6 text-left whitespace-nowrap">
-                Mariana Ribeiro Santos - Assistente Administrativo
-            </td>
-            <td class="py-3 px-6 text-center">
-                <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" />
-            </td>
-        </tr>
-        <tr class="border-b border-gray-200 hover:bg-gray-100">
-            <td class="py-3 px-6 text-center">
-                <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-            </td>
-            <td class="py-3 px-6 text-left whitespace-nowrap">
-                Felipe Costa Lima - Estagiário
-            </td>
-            <td class="py-3 px-6 text-center">
-                <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" />
-            </td>
-        </tr>
-        <tr class="border-b border-gray-200 hover:bg-gray-100">
-            <td class="py-3 px-6 text-center">
-                <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-            </td>
-            <td class="py-3 px-6 text-left whitespace-nowrap">
-                Ana Clara Mendes - Analista de Projetos
-            </td>
-            <td class="py-3 px-6 text-center">
-                <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" />
-            </td>
-        </tr>
-    </tbody>
-</table>
+                        <table class="min-w-full table-auto">
+                            <thead>
+                                <tr class="bg-blue-custom text-white uppercase text-sm leading-normal">
+                                    <th class="py-3 px-6 text-center"></th> <!-- Coluna para o ícone -->
+                                    <th class="py-3 px-6 text-left">Nome</th>
+                                    <th class="py-3 px-6 text-center">Apoio</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-600 text-sm font-light">
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="py-3 px-6 text-center">
+                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
+                                    </td>
+                                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                                        Julia Emily Souza da Silva - Trainee
+                                    </td>
+                                    <td class="py-3 px-6 text-center">
+                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" />
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="py-3 px-6 text-center">
+                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
+                                    </td>
+                                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                                        Lucas Gabriel Oliveira - Analista Júnior
+                                    </td>
+                                    <td class="py-3 px-6 text-center">
+                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" />
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="py-3 px-6 text-center">
+                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
+                                    </td>
+                                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                                        Mariana Ribeiro Santos - Assistente Administrativo
+                                    </td>
+                                    <td class="py-3 px-6 text-center">
+                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" />
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="py-3 px-6 text-center">
+                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
+                                    </td>
+                                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                                        Felipe Costa Lima - Estagiário
+                                    </td>
+                                    <td class="py-3 px-6 text-center">
+                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" />
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="py-3 px-6 text-center">
+                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
+                                    </td>
+                                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                                        Ana Clara Mendes - Analista de Projetos
+                                    </td>
+                                    <td class="py-3 px-6 text-center">
+                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
 
                     </div>
                     <div class="action-icons">
