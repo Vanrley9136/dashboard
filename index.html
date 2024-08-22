@@ -1,1071 +1,729 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard Moderno</title>
+    <title>Dashboard</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-..."
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Manrope:500,600,700,800&amp;display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Manrope:500,600,700,800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <!-- Estilos da Pagina -->
+    <link rel="stylesheet" href="../assets/style.css" />
     <!-- SortableJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+  </head>
 
-    <style>
-        :root {
-            --sidebar-bg: #1e293b;
-            --sidebar-text-color: #e2e8f0;
-            --primary-bg: #f1f5f9;
-            --secondary-bg: rgb(141 0 255);
-            --icon-color: #eff6ff;
-            --text-color: #475569;
-            --header-bg: #ffffff;
-            --accent-color: #10b981;
-        }
-
-        @font-face {
-            font-family: 'SF Pro Display';
-            src: url('sf-pro-display/SFPRODISPLAYREGULAR.OTF') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        body {
-            font-family: 'SF Pro Display', sans-serif !important;
-            background-color: var(--primary-bg);
-        }
-
-        .hover-shadow:hover {
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            transition: all 0.2s ease-in-out;
-        }
-
-        .bg-blue-custom {
-            background-color: var(--secondary-bg);
-            color: var(--sidebar-text-color);
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-        }
-
-        .form-input,
-        .form-select {
-            background-color: #f3f4f6;
-            border: 1px solid #94a3b8;
-            color: var(--text-color);
-            padding: 0.75rem;
-            border-radius: 0.375rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-            width: 100%;
-        }
-
-        .form-input:focus,
-        .form-select:focus {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.5);
-        }
-
-        .filtros-container {
-            margin-top: 4rem !important;
-        }
-
-        button.bg-green-500 i {
-            color: #ffffff;
-        }
-
-        @media (max-width: 768px) {
-            .filtros-container {
-                grid-template-columns: 1fr;
-                gap: 0.5rem;
-            }
-        }
-
-        .dropdown-menu {
-            display: none;
-            flex-direction: column;
-            margin-top: 0.5rem;
-            padding-left: 1.5rem;
-            width: 100%;
-        }
-
-        .dropdown-menu a {
-            padding: 0.5rem 1rem;
-            color: var(--sidebar-text-color);
-            border-radius: 0.25rem;
-            transition: background-color 0.2s ease-in-out;
-            width: 100%;
-            text-align: left;
-        }
-
-        .dropdown-menu a:hover {
-            background-color: var(--accent-color);
-        }
-
-        .dropdown-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        .dropdown-toggle i {
-            transition: transform 0.3s ease;
-        }
-
-        .dropdown.active .dropdown-toggle i {
-            transform: rotate(180deg);
-        }
-
-        .square-button {
-            width: 50px;
-            height: 50px;
-            background-color: var(--accent-color);
-            color: var(--sidebar-text-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s ease;
-        }
-
-        .square-button:hover {
-            background-color: #0ea672;
-        }
-
-        .sidebar {
-            background: var(--sidebar-bg);
-            color: var(--sidebar-text-color);
-            transition: width 0.3s ease;
-            width: 16rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .sidebar-collapsed {
-            width: 4rem;
-        }
-
-        .sidebar a {
-            color: var(--sidebar-text-color);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 3rem;
-            padding: 0 1rem;
-            font-weight: 500;
-        }
-
-        .sidebar a:hover {
-            background-color: var(--secondary-bg);
-            border-radius: 4px;
-        }
-
-        .sidebar i {
-            color: var(--icon-color);
-        }
-
-        .bg-blue-custom {
-            background-color: var(--secondary-bg);
-            color: var(--sidebar-text-color);
-        }
-
-        .action-icons {
-            position: relative;
-            margin-top: -70px;
-            padding-top: 80px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .sidebar-text {
-            display: inline-block;
-            white-space: nowrap;
-            margin-left: 0.5rem;
-        }
-
-        .dropdown-active:hover {
-            color: #1e293b !important;
-        }
-
-        .sidebar-collapsed .sidebar-text {
-            display: none;
-        }
-
-        .sidebar .sidebar-icon {
-            margin-right: 1rem;
-        }
-
-        .version {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            padding: 5px 10px;
-            background: var(--accent-color);
-            border-radius: 5px;
-            color: var(--header-bg);
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .developer-credits {
-            text-align: center;
-            padding: 1rem;
-            font-size: 0.875rem;
-            color: var(--text-color);
-        }
-
-        .sortable-container {
-            min-height: 100px;
-        }
-
-        .clock {
-            font-size: 1.75rem;
-            color: rgb(141 0 255);
-            font-weight: 700;
-            text-align: center;
-            background-color: #e2e8f0;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 0 auto;
-        }
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background-color: var(--secondary-bg);
-            padding: 1rem;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background-color: #334155;
-            border-radius: 10px;
-            border: 2px solid #f1f5f9;
-        }
-
-        .scroll-container {
-            scrollbar-color: #334155 #f1f5f9;
-            scrollbar-width: thin;
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            position: relative;
-        }
-
-        .double-bounce1,
-        .double-bounce2 {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background-color: var(--accent-color);
-            opacity: 0.6;
-            position: absolute;
-            top: 0;
-            left: 0;
-            animation: bounce 2s infinite ease-in-out;
-        }
-
-        .double-bounce2 {
-            animation-delay: -1s;
-        }
-
-        @keyframes bounce {
-
-            0%,
-            100% {
-                transform: scale(0);
-            }
-
-            50% {
-                transform: scale(1);
-            }
-        }
-
-        #preloader p {
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.5;
-            }
-        }
-
-        #sortableContainer,
-        header,
-        .sidebar {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .content-loaded #sortableContainer,
-        .content-loaded header,
-        .content-loaded .sidebar {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .drag-handle {
-            cursor: move;
-            color: var(--icon-color);
-            margin-right: 10px;
-            font-size: 1.25rem;
-        }
-
-        .drag-handle:hover {
-            color: var(--accent-color);
-        }
-
-        .sortable-container .card-content {
-            padding: 1rem;
-            border-radius: 0.5rem;
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Estilos dos botões de ação */
-
-        /* Botão de editar (azul) */
-        .square-button.edit {
-            background-color: #3b82f6;
-            /* Azul */
-            color: #ffffff;
-        }
-
-        .square-button.edit:hover {
-            background-color: #2563eb;
-            /* Azul mais escuro no hover */
-        }
-
-        /* Botão de deletar (vermelho) */
-        .square-button.delete {
-            background-color: #ef4444;
-            /* Vermelho */
-            color: #ffffff;
-        }
-
-        .square-button.delete:hover {
-            background-color: #dc2626;
-            /* Vermelho mais escuro no hover */
-        }
-
-        /* Botão de sincronizar (verde) */
-        .square-button.sync {
-            background-color: #10b981;
-            /* Verde */
-            color: #ffffff;
-        }
-
-        .square-button.sync:hover {
-            background-color: #059669;
-            /* Verde mais escuro no hover */
-        }
-
-        .table-container {
-            max-height: 300px;
-            /* Define a altura máxima do container da tabela */
-            overflow-y: auto;
-            /* Ativa o scroll vertical se a altura exceder o limite */
-            overflow-x: auto;
-            /* Ativa o scroll horizontal */
-            margin-bottom: 20px;
-            /* Espaço extra abaixo da tabela */
-        }
-
-        .table-auto thead th:first-child,
-        .table-auto tbody td:first-child {
-            width: 40px;
-            /* Largura fixa para a coluna dos ícones */
-            text-align: center;
-            padding: 8px;
-        }
-
-        .table-auto tbody td i {
-            font-size: 1.25rem;
-            /* Tamanho do ícone */
-            color: #3b82f6;
-            /* Cor do ícone, pode ser ajustada conforme necessário */
-        }
-
-        .table-auto tbody tr:hover td i {
-            color: #2563eb;
-            /* Cor do ícone no hover */
-        }
-    </style>
-</head>
-
-<body class="font-poppins">
+  <body class="font-poppins">
     <!-- Preloader -->
-    <div id="preloader" class="fixed inset-0 bg-white z-50 flex items-center justify-center">
-        <div class="flex flex-col items-center">
-            <div class="spinner">
-                <div class="double-bounce1"></div>
-                <div class="double-bounce2"></div>
-            </div>
-            <p class="mt-4 text-gray-700 font-semibold animate-pulse">
-                Carregando...
-            </p>
+    <div
+      id="preloader"
+      class="fixed inset-0 bg-white z-50 flex items-center justify-center"
+    >
+      <div class="flex flex-col items-center">
+        <div class="spinner">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
         </div>
+        <p class="mt-4 text-gray-700 font-semibold animate-pulse">
+          Carregando...
+        </p>
+      </div>
     </div>
 
     <!-- Wrapper -->
     <div class="flex h-screen">
-        <!-- Sidebar -->
-        <aside id="sidebar" class="sidebar flex-shrink-0 border-r">
-            <div>
-                <!-- Navigation -->
-                <nav class="overflow-y-auto p-4">
-                    <ul id="sidebarMenu" class="space-y-2">
-                        <li>
-                            <a href="#" class="p-3 hover:bg-gray-700 rounded-md transition-colors hover-shadow">
-                                <i class="fas fa-home text-lg sidebar-icon"></i>
-                                <span class="sidebar-text text-md">Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="p-3 hover:bg-gray-700 rounded-md transition-colors hover-shadow dropdown-toggle">
-                                <div>
-                                    <i class="fas fa-calendar-alt text-lg sidebar-icon"></i>
-                                    <span class="sidebar-text text-md">Calendário</span>
-                                </div>
-                                <i class="fas fa-chevron-down"></i>
-                            </a>
-                            <div class="dropdown-menu">
-                                <a href="#">Eventos</a>
-                                <a href="#">Agendas</a>
-                            </div>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="p-3 hover:bg-gray-700 rounded-md transition-colors hover-shadow dropdown-toggle">
-                                <div>
-                                    <i class="fas fa-users text-lg sidebar-icon"></i>
-                                    <span class="sidebar-text text-md">Colaboradores</span>
-                                </div>
-                                <i class="fas fa-chevron-down"></i>
-                            </a>
-                            <div class="dropdown-menu">
-                                <a href="#">Gerenciar</a>
-                                <a href="#">Adicionar Novo</a>
-                            </div>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="p-3 hover:bg-gray-700 rounded-md transition-colors hover-shadow dropdown-toggle">
-                                <div>
-                                    <i class="fas fa-tasks text-lg sidebar-icon"></i>
-                                    <span class="sidebar-text text-md">Projetos</span>
-                                </div>
-                                <i class="fas fa-chevron-down"></i>
-                            </a>
-                            <div class="dropdown-menu">
-                                <a href="#">Atuais</a>
-                                <a href="#">Finalizados</a>
-                            </div>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="p-3 hover:bg-gray-700 rounded-md transition-colors hover-shadow dropdown-toggle">
-                                <div>
-                                    <i class="fas fa-cog text-lg sidebar-icon"></i>
-                                    <span class="sidebar-text text-md">Configurações</span>
-                                </div>
-                                <i class="fas fa-chevron-down"></i>
-                            </a>
-                            <div class="dropdown-menu">
-                                <a href="#">Preferências</a>
-                                <a href="#">Segurança</a>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <!-- Footer -->
-            <div class="p-4 border-t border-gray-200">
-                <a href="#" class="p-3 text-white hover:text-red-600 transition-colors hover-shadow">
-                    <i class="fas fa-sign-out-alt text-lg sidebar-icon"></i>
-                    <span class="sidebar-text text-md">Sair</span>
+      <!-- Sidebar -->
+      <aside id="sidebar" class="sidebar flex-shrink-0 border-r">
+        <div>
+          <!-- Navigation -->
+          <nav class="overflow-y-auto p-4">
+            <ul id="sidebarMenu" class="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  class="p-3 hover:bg-gray-700 rounded-md transition-colors hover-shadow"
+                >
+                  <i class="fas fa-home text-lg sidebar-icon"></i>
+                  <span class="sidebar-text text-md">Dashboard</span>
                 </a>
+              </li>
+              <li class="dropdown">
+                <a
+                  href="#"
+                  class="p-3 hover:bg-gray-700 rounded-md transition-colors hover-shadow dropdown-toggle"
+                >
+                  <div>
+                    <i class="fas fa-calendar-alt text-lg sidebar-icon"></i>
+                    <span class="sidebar-text text-md">Calendário</span>
+                  </div>
+                  <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-menu">
+                  <a href="#">Eventos</a>
+                  <a href="#">Agendas</a>
+                </div>
+              </li>
+              <li class="dropdown">
+                <a
+                  href="#"
+                  class="p-3 hover:bg-gray-700 rounded-md transition-colors hover-shadow dropdown-toggle"
+                >
+                  <div>
+                    <i class="fas fa-users text-lg sidebar-icon"></i>
+                    <span class="sidebar-text text-md">Colaboradores</span>
+                  </div>
+                  <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-menu">
+                  <a href="#">Gerenciar</a>
+                  <a href="#">Adicionar Novo</a>
+                </div>
+              </li>
+              <li class="dropdown">
+                <a
+                  href="#"
+                  class="p-3 hover:bg-gray-700 rounded-md transition-colors hover-shadow dropdown-toggle"
+                >
+                  <div>
+                    <i class="fas fa-tasks text-lg sidebar-icon"></i>
+                    <span class="sidebar-text text-md">Projetos</span>
+                  </div>
+                  <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-menu">
+                  <a href="#">Atuais</a>
+                  <a href="#">Finalizados</a>
+                </div>
+              </li>
+              <li class="dropdown">
+                <a
+                  href="#"
+                  class="p-3 hover:bg-gray-700 rounded-md transition-colors hover-shadow dropdown-toggle"
+                >
+                  <div>
+                    <i class="fas fa-cog text-lg sidebar-icon"></i>
+                    <span class="sidebar-text text-md">Configurações</span>
+                  </div>
+                  <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-menu">
+                  <a href="#">Preferências</a>
+                  <a href="#">Segurança</a>
+                </div>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <!-- Footer -->
+        <div class="p-4 border-t border-gray-200">
+          <a
+            href="#"
+            class="p-3 text-white hover:text-red-600 transition-colors hover-shadow"
+          >
+            <i class="fas fa-sign-out-alt text-lg sidebar-icon"></i>
+            <span class="sidebar-text text-md">Sair</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="flex-1 p-6 overflow-y-auto">
+        <!-- Header -->
+        <header
+          class="flex items-center justify-between mb-6 bg-blue-custom p-4 rounded-md shadow-lg"
+        >
+          <h1 class="text-3xl text-white">Auditoria - Programação</h1>
+          <div class="clock" id="clock">00:00:00</div>
+          <div class="flex items-center space-x-4">
+            <span class="text-gray-700 text-lg text-white">Moore</span>
+            <button
+              id="themeToggle"
+              class="p-2 bg-white border rounded-full shadow-sm hover:bg-gray-100 hover-shadow"
+            >
+              <i id="themeIcon" class="fas fa-moon text-gray-600"></i>
+            </button>
+            <button id="fullscreenToggle" class="fullscreen-btn">
+              <i class="fa-solid fa-expand"></i>
+            </button>
+            <button
+              class="p-2 bg-white border rounded-full shadow-sm hover:bg-gray-100 hover-shadow"
+            >
+              <i class="fas fa-bell text-gray-600"></i>
+            </button>
+            <div class="flex items-center space-x-2">
+              <img
+                src="https://cdn3d.iconscout.com/3d/premium/thumb/verified-user-5179177-4347123.png"
+                alt="User Avatar"
+                class="w-10 h-10 rounded-full"
+              />
             </div>
-        </aside>
+          </div>
+        </header>
 
-        <!-- Main Content -->
-        <div class="flex-1 p-6 overflow-y-auto">
-            <!-- Header -->
-            <header class="flex items-center justify-between mb-6 bg-blue-custom p-4 rounded-md shadow-lg">
-                <h1 class="text-3xl text-white ">Auditoria - Programação</h1>
-                <div class="clock" id="clock">00:00:00</div>
-                <div class="flex items-center space-x-4">
-                    <span class="text-gray-700 text-lg text-white">Moore</span>
-                    <button id="fullscreenToggle" class="fullscreen-btn">
-                        <i class="fa-solid fa-expand"></i>
-                    </button>
-                    <button class="p-2 bg-white border rounded-full shadow-sm hover:bg-gray-100 hover-shadow">
-                        <i class="fas fa-bell text-gray-600"></i>
-                    </button>
-                    <div class="flex items-center space-x-2">
-                        <img src="https://cdn3d.iconscout.com/3d/premium/thumb/verified-user-5179177-4347123.png" alt="User Avatar" class="w-10 h-10 rounded-full" />
-                    </div>
-                </div>
-            </header>
-
-            <!-- Tables Section -->
-            <div id="sortableContainer" class="grid grid-cols-1 lg:grid-cols-3 gap-6 sortable-container">
-                <!-- Tabela 1: Detalhes da Programação -->
-                <div class="card-content" data-id="1">
-                    <div class="flex items-center justify-between mb-4 bg-blue-custom p-2 rounded-md shadow">
-                        <i class="fas fa-arrows-alt drag-handle"></i> <!-- Ícone de arrastar -->
-                        <h2 class="text-xl text-white">Detalhes da Programação</h2>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full table-auto">
-                            <thead>
-                                <tr class="bg-blue-custom text-white uppercase text-sm leading-normal">
-                                    <th class="py-3 px-6 text-center"></th>
-                                    <th class="py-3 px-6 text-left">Ficha</th>
-                                    <th class="py-3 px-6 text-left">Cliente</th>
-                                    <th class="py-3 px-6 text-left">Filial de Execução</th>
-                                    <th class="py-3 px-6 text-center">ID</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-gray-600 text-sm font-light">
-                                <tr class="border-b border-gray-200 hover:bg-gray-100">
-                                    <td class="py-3 px-6 text-center">
-                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-                                    </td>
-                                    <td class="py-3 px-6 text-left whitespace-nowrap">0044/2024</td>
-                                    <td class="py-3 px-6 text-left">CORPTECH</td>
-                                    <td class="py-3 px-6 text-left">CORPTECH</td>
-                                    <td class="py-3 px-6 text-center">22462</td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-gray-100">
-                                    <td class="py-3 px-6 text-center">
-                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-                                    </td>
-                                    <td class="py-3 px-6 text-left whitespace-nowrap">0045/2024</td>
-                                    <td class="py-3 px-6 text-left">ALPHALOGIC</td>
-                                    <td class="py-3 px-6 text-left">ALPHALOGIC</td>
-                                    <td class="py-3 px-6 text-center">22463</td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-gray-100">
-                                    <td class="py-3 px-6 text-center">
-                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-                                    </td>
-                                    <td class="py-3 px-6 text-left whitespace-nowrap">0046/2024</td>
-                                    <td class="py-3 px-6 text-left">MEGASTAR</td>
-                                    <td class="py-3 px-6 text-left">MEGASTAR</td>
-                                    <td class="py-3 px-6 text-center">22464</td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-gray-100">
-                                    <td class="py-3 px-6 text-center">
-                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-                                    </td>
-                                    <td class="py-3 px-6 text-left whitespace-nowrap">0047/2024</td>
-                                    <td class="py-3 px-6 text-left">TECHNOW</td>
-                                    <td class="py-3 px-6 text-left">TECHNOW</td>
-                                    <td class="py-3 px-6 text-center">22465</td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-gray-100">
-                                    <td class="py-3 px-6 text-center">
-                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-                                    </td>
-                                    <td class="py-3 px-6 text-left whitespace-nowrap">0048/2024</td>
-                                    <td class="py-3 px-6 text-left">NEXUS</td>
-                                    <td class="py-3 px-6 text-left">NEXUS</td>
-                                    <td class="py-3 px-6 text-center">22466</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-
-
-                    </div>
-                    <div class="action-icons">
-                        <button class="square-button edit">
-                            <i class="fas fa-edit"></i>
-                        </button>
-                        <button class="square-button delete">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                        <button class="square-button sync">
-                            <i class="fas fa-sync-alt"></i>
-                        </button>
-                    </div>
-
-                </div>
-
-                <!-- Tabela 2: Recursos Contratados -->
-                <div class="card-content" data-id="2">
-                    <div class="flex items-center justify-between mb-4 bg-blue-custom p-2 rounded-md shadow">
-                        <i class="fas fa-arrows-alt drag-handle"></i> <!-- Ícone de arrastar -->
-                        <h2 class="text-xl text-white">Recursos Contratados</h2>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full table-auto">
-                            <thead>
-                                <tr class="bg-blue-custom text-white uppercase text-sm leading-normal">
-                                    <th class="py-3 px-6 text-center"></th> <!-- Coluna para o ícone -->
-                                    <th class="py-3 px-6 text-left">Cargo</th>
-                                    <th class="py-3 px-6 text-center">Qt.Func.</th>
-                                    <th class="py-3 px-6 text-center">Tipo</th>
-                                    <th class="py-3 px-6 text-center">HI</th>
-                                    <th class="py-3 px-6 text-center">HE</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-gray-600 text-sm font-light">
-                                <tr class="border-b border-gray-200 hover:bg-gray-100">
-                                    <td class="py-3 px-6 text-center">
-                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-                                    </td>
-                                    <td class="py-3 px-6 text-left whitespace-nowrap">
-                                        Sênior
-                                    </td>
-                                    <td class="py-3 px-6 text-center">1</td>
-                                    <td class="py-3 px-6 text-center">Normal</td>
-                                    <td class="py-3 px-6 text-center">0</td>
-                                    <td class="py-3 px-6 text-center">0</td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-gray-100">
-                                    <td class="py-3 px-6 text-center">
-                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-                                    </td>
-                                    <td class="py-3 px-6 text-left whitespace-nowrap">Pleno</td>
-                                    <td class="py-3 px-6 text-center">2</td>
-                                    <td class="py-3 px-6 text-center">Normal</td>
-                                    <td class="py-3 px-6 text-center">1</td>
-                                    <td class="py-3 px-6 text-center">2</td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-gray-100">
-                                    <td class="py-3 px-6 text-center">
-                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-                                    </td>
-                                    <td class="py-3 px-6 text-left whitespace-nowrap">
-                                        Júnior
-                                    </td>
-                                    <td class="py-3 px-6 text-center">3</td>
-                                    <td class="py-3 px-6 text-center">Normal</td>
-                                    <td class="py-3 px-6 text-center">2</td>
-                                    <td class="py-3 px-6 text-center">3</td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-gray-100">
-                                    <td class="py-3 px-6 text-center">
-                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-                                    </td>
-                                    <td class="py-3 px-6 text-left whitespace-nowrap">
-                                        Coordenador
-                                    </td>
-                                    <td class="py-3 px-6 text-center">1</td>
-                                    <td class="py-3 px-6 text-center">Especial</td>
-                                    <td class="py-3 px-6 text-center">0</td>
-                                    <td class="py-3 px-6 text-center">1</td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-gray-100">
-                                    <td class="py-3 px-6 text-center">
-                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-                                    </td>
-                                    <td class="py-3 px-6 text-left whitespace-nowrap">
-                                        Estagiário
-                                    </td>
-                                    <td class="py-3 px-6 text-center">5</td>
-                                    <td class="py-3 px-6 text-center">Normal</td>
-                                    <td class="py-3 px-6 text-center">4</td>
-                                    <td class="py-3 px-6 text-center">5</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-                    <div class="action-icons">
-                        <button class="square-button edit">
-                            <i class="fas fa-edit"></i>
-                        </button>
-                        <button class="square-button delete">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                        <button class="square-button sync">
-                            <i class="fas fa-sync-alt"></i>
-                        </button>
-                    </div>
-
-                </div>
-
-                <!-- Tabela 3: Recursos Alocados -->
-                <div class="card-content" data-id="3">
-                    <div class="flex items-center justify-between mb-4 bg-blue-custom p-2 rounded-md shadow">
-                        <i class="fas fa-arrows-alt drag-handle"></i> <!-- Ícone de arrastar -->
-                        <h2 class="text-xl text-white">Recursos Alocados</h2>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full table-auto">
-                            <thead>
-                                <tr class="bg-blue-custom text-white uppercase text-sm leading-normal">
-                                    <th class="py-3 px-6 text-center"></th> <!-- Coluna para o ícone -->
-                                    <th class="py-3 px-6 text-left">Nome</th>
-                                    <th class="py-3 px-6 text-center">Apoio</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-gray-600 text-sm font-light">
-                                <tr class="border-b border-gray-200 hover:bg-gray-100">
-                                    <td class="py-3 px-6 text-center">
-                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-                                    </td>
-                                    <td class="py-3 px-6 text-left whitespace-nowrap">
-                                        Julia Emily Souza da Silva - Trainee
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" />
-                                    </td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-gray-100">
-                                    <td class="py-3 px-6 text-center">
-                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-                                    </td>
-                                    <td class="py-3 px-6 text-left whitespace-nowrap">
-                                        Lucas Gabriel Oliveira - Analista Júnior
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" />
-                                    </td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-gray-100">
-                                    <td class="py-3 px-6 text-center">
-                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-                                    </td>
-                                    <td class="py-3 px-6 text-left whitespace-nowrap">
-                                        Mariana Ribeiro Santos - Assistente Administrativo
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" />
-                                    </td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-gray-100">
-                                    <td class="py-3 px-6 text-center">
-                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-                                    </td>
-                                    <td class="py-3 px-6 text-left whitespace-nowrap">
-                                        Felipe Costa Lima - Estagiário
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" />
-                                    </td>
-                                </tr>
-                                <tr class="border-b border-gray-200 hover:bg-gray-100">
-                                    <td class="py-3 px-6 text-center">
-                                        <i class="fas fa-arrow-right text-blue-500"></i> <!-- Ícone de seta -->
-                                    </td>
-                                    <td class="py-3 px-6 text-left whitespace-nowrap">
-                                        Ana Clara Mendes - Analista de Projetos
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" />
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-                    <div class="action-icons">
-                        <button class="square-button edit">
-                            <i class="fas fa-edit"></i>
-                        </button>
-                        <button class="square-button delete">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                        <button class="square-button sync">
-                            <i class="fas fa-sync-alt"></i>
-                        </button>
-                    </div>
-
-                </div>
+        <!-- Tables Section -->
+        <div
+          id="sortableContainer"
+          class="grid grid-cols-1 lg:grid-cols-3 gap-6 sortable-container"
+        >
+          <!-- Tabela 1: Detalhes da Programação -->
+          <div class="card-content" data-id="1">
+            <div
+              class="flex items-center justify-between mb-4 bg-blue-custom p-2 rounded-md shadow"
+            >
+              <i class="fas fa-arrows-alt drag-handle"></i>
+              <!-- Ícone de arrastar -->
+              <h2 class="text-xl text-white">Detalhes da Programação</h2>
             </div>
-<!-- Cronograma de Atividades Elegante -->
-<div class="card-content mb-32 p-6 bg-white rounded-lg shadow-xl">
-    <div class="flex items-center justify-between mb-6 bg-blue-custom p-4 rounded-md shadow-lg">
-        <h2 class="text-2xl font-bold text-white">Cronograma de Atividades</h2>
-    </div>
-    <div class="overflow-x-auto">
-        <table class="min-w-full table-auto bg-white rounded-lg shadow-lg overflow-hidden">
-            <thead class="bg-gradient-to-r from-purple-600 to-blue-500 text-white">
+            <div class="overflow-x-auto">
+              <table class="min-w-full table-auto">
+                <thead>
+                  <tr
+                    class="bg-blue-custom text-white uppercase text-sm leading-normal"
+                  >
+                    <th class="py-3 px-6 text-center"></th>
+                    <th class="py-3 px-6 text-left">Ficha</th>
+                    <th class="py-3 px-6 text-left">Cliente</th>
+                    <th class="py-3 px-6 text-left">Filial de Execução</th>
+                    <th class="py-3 px-6 text-center">ID</th>
+                  </tr>
+                </thead>
+                <tbody class="text-gray-600 text-sm font-light">
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-center">
+                      <i class="fas fa-arrow-right text-blue-500"></i>
+                      <!-- Ícone de seta -->
+                    </td>
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      0044/2024
+                    </td>
+                    <td class="py-3 px-6 text-left">CORPTECH</td>
+                    <td class="py-3 px-6 text-left">CORPTECH</td>
+                    <td class="py-3 px-6 text-center">22462</td>
+                  </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-center">
+                      <i class="fas fa-arrow-right text-blue-500"></i>
+                      <!-- Ícone de seta -->
+                    </td>
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      0045/2024
+                    </td>
+                    <td class="py-3 px-6 text-left">ALPHALOGIC</td>
+                    <td class="py-3 px-6 text-left">ALPHALOGIC</td>
+                    <td class="py-3 px-6 text-center">22463</td>
+                  </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-center">
+                      <i class="fas fa-arrow-right text-blue-500"></i>
+                      <!-- Ícone de seta -->
+                    </td>
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      0046/2024
+                    </td>
+                    <td class="py-3 px-6 text-left">MEGASTAR</td>
+                    <td class="py-3 px-6 text-left">MEGASTAR</td>
+                    <td class="py-3 px-6 text-center">22464</td>
+                  </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-center">
+                      <i class="fas fa-arrow-right text-blue-500"></i>
+                      <!-- Ícone de seta -->
+                    </td>
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      0047/2024
+                    </td>
+                    <td class="py-3 px-6 text-left">TECHNOW</td>
+                    <td class="py-3 px-6 text-left">TECHNOW</td>
+                    <td class="py-3 px-6 text-center">22465</td>
+                  </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-center">
+                      <i class="fas fa-arrow-right text-blue-500"></i>
+                      <!-- Ícone de seta -->
+                    </td>
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      0048/2024
+                    </td>
+                    <td class="py-3 px-6 text-left">NEXUS</td>
+                    <td class="py-3 px-6 text-left">NEXUS</td>
+                    <td class="py-3 px-6 text-center">22466</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="action-icons">
+              <button class="square-button edit">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="square-button delete">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+              <button class="square-button sync">
+                <i class="fas fa-sync-alt"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Tabela 2: Recursos Contratados -->
+          <div class="card-content" data-id="2">
+            <div
+              class="flex items-center justify-between mb-4 bg-blue-custom p-2 rounded-md shadow"
+            >
+              <i class="fas fa-arrows-alt drag-handle"></i>
+              <!-- Ícone de arrastar -->
+              <h2 class="text-xl text-white">Recursos Contratados</h2>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="min-w-full table-auto">
+                <thead>
+                  <tr
+                    class="bg-blue-custom text-white uppercase text-sm leading-normal"
+                  >
+                    <th class="py-3 px-6 text-center"></th>
+                    <!-- Coluna para o ícone -->
+                    <th class="py-3 px-6 text-left">Cargo</th>
+                    <th class="py-3 px-6 text-center">Qt.Func.</th>
+                    <th class="py-3 px-6 text-center">Tipo</th>
+                    <th class="py-3 px-6 text-center">HI</th>
+                    <th class="py-3 px-6 text-center">HE</th>
+                  </tr>
+                </thead>
+                <tbody class="text-gray-600 text-sm font-light">
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-center">
+                      <i class="fas fa-arrow-right text-blue-500"></i>
+                      <!-- Ícone de seta -->
+                    </td>
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      Sênior
+                    </td>
+                    <td class="py-3 px-6 text-center">1</td>
+                    <td class="py-3 px-6 text-center">Normal</td>
+                    <td class="py-3 px-6 text-center">0</td>
+                    <td class="py-3 px-6 text-center">0</td>
+                  </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-center">
+                      <i class="fas fa-arrow-right text-blue-500"></i>
+                      <!-- Ícone de seta -->
+                    </td>
+                    <td class="py-3 px-6 text-left whitespace-nowrap">Pleno</td>
+                    <td class="py-3 px-6 text-center">2</td>
+                    <td class="py-3 px-6 text-center">Normal</td>
+                    <td class="py-3 px-6 text-center">1</td>
+                    <td class="py-3 px-6 text-center">2</td>
+                  </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-center">
+                      <i class="fas fa-arrow-right text-blue-500"></i>
+                      <!-- Ícone de seta -->
+                    </td>
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      Júnior
+                    </td>
+                    <td class="py-3 px-6 text-center">3</td>
+                    <td class="py-3 px-6 text-center">Normal</td>
+                    <td class="py-3 px-6 text-center">2</td>
+                    <td class="py-3 px-6 text-center">3</td>
+                  </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-center">
+                      <i class="fas fa-arrow-right text-blue-500"></i>
+                      <!-- Ícone de seta -->
+                    </td>
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      Coordenador
+                    </td>
+                    <td class="py-3 px-6 text-center">1</td>
+                    <td class="py-3 px-6 text-center">Especial</td>
+                    <td class="py-3 px-6 text-center">0</td>
+                    <td class="py-3 px-6 text-center">1</td>
+                  </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-center">
+                      <i class="fas fa-arrow-right text-blue-500"></i>
+                      <!-- Ícone de seta -->
+                    </td>
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      Estagiário
+                    </td>
+                    <td class="py-3 px-6 text-center">5</td>
+                    <td class="py-3 px-6 text-center">Normal</td>
+                    <td class="py-3 px-6 text-center">4</td>
+                    <td class="py-3 px-6 text-center">5</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="action-icons">
+              <button class="square-button edit">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="square-button delete">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+              <button class="square-button sync">
+                <i class="fas fa-sync-alt"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Tabela 3: Recursos Alocados -->
+          <div class="card-content" data-id="3">
+            <div
+              class="flex items-center justify-between mb-4 bg-blue-custom p-2 rounded-md shadow"
+            >
+              <i class="fas fa-arrows-alt drag-handle"></i>
+              <!-- Ícone de arrastar -->
+              <h2 class="text-xl text-white">Recursos Alocados</h2>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="min-w-full table-auto">
+                <thead>
+                  <tr
+                    class="bg-blue-custom text-white uppercase text-sm leading-normal"
+                  >
+                    <th class="py-3 px-6 text-center"></th>
+                    <!-- Coluna para o ícone -->
+                    <th class="py-3 px-6 text-left">Nome</th>
+                    <th class="py-3 px-6 text-center">Apoio</th>
+                  </tr>
+                </thead>
+                <tbody class="text-gray-600 text-sm font-light">
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-center">
+                      <i class="fas fa-arrow-right text-blue-500"></i>
+                      <!-- Ícone de seta -->
+                    </td>
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      Julia Emily Souza da Silva - Trainee
+                    </td>
+                    <td class="py-3 px-6 text-center">
+                      <input
+                        type="checkbox"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-center">
+                      <i class="fas fa-arrow-right text-blue-500"></i>
+                      <!-- Ícone de seta -->
+                    </td>
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      Lucas Gabriel Oliveira - Analista Júnior
+                    </td>
+                    <td class="py-3 px-6 text-center">
+                      <input
+                        type="checkbox"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-center">
+                      <i class="fas fa-arrow-right text-blue-500"></i>
+                      <!-- Ícone de seta -->
+                    </td>
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      Mariana Ribeiro Santos - Assistente Administrativo
+                    </td>
+                    <td class="py-3 px-6 text-center">
+                      <input
+                        type="checkbox"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-center">
+                      <i class="fas fa-arrow-right text-blue-500"></i>
+                      <!-- Ícone de seta -->
+                    </td>
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      Felipe Costa Lima - Estagiário
+                    </td>
+                    <td class="py-3 px-6 text-center">
+                      <input
+                        type="checkbox"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-center">
+                      <i class="fas fa-arrow-right text-blue-500"></i>
+                      <!-- Ícone de seta -->
+                    </td>
+                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                      Ana Clara Mendes - Analista de Projetos
+                    </td>
+                    <td class="py-3 px-6 text-center">
+                      <input
+                        type="checkbox"
+                        class="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="action-icons">
+              <button class="square-button edit">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="square-button delete">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+              <button class="square-button sync">
+                <i class="fas fa-sync-alt"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cronograma de Atividades Elegante -->
+        <div class="card-content mt-12 mb-32 p-6 bg-white rounded-lg shadow-xl">
+          <div
+            class="flex items-center justify-between mb-6 bg-blue-custom p-4 rounded-md shadow-lg"
+          >
+            <h2 class="text-2xl font-bold text-white">
+              Cronograma de Atividades
+            </h2>
+          </div>
+          <div class="overflow-x-auto">
+            <table
+              class="min-w-full table-auto bg-white rounded-lg shadow-lg overflow-hidden"
+            >
+              <thead class="bg-gradient-to-r bg-blue-custom text-white">
                 <tr>
-                    <th class="py-4 px-8 text-left text-lg">Data</th>
-                    <th class="py-4 px-8 text-left text-lg">Atividade</th>
-                    <th class="py-4 px-8 text-center text-lg">Responsável</th>
-                    <th class="py-4 px-8 text-center text-lg">Status</th>
-                    <th class="py-4 px-8 text-center text-lg">Ação</th>
+                  <th class="py-4 px-8 text-left text-lg">Data</th>
+                  <th class="py-4 px-8 text-left text-lg">Atividade</th>
+                  <th class="py-4 px-8 text-center text-lg">Responsável</th>
+                  <th class="py-4 px-8 text-center text-lg">Status</th>
+                  <th class="py-4 px-8 text-center text-lg">Ação</th>
                 </tr>
-            </thead>
-            <tbody class="text-gray-700 text-sm font-light">
+              </thead>
+              <tbody class="text-gray-700 text-sm font-light">
                 <tr class="hover:bg-gray-100 transition duration-300">
-                    <td class="py-5 px-8 text-left whitespace-nowrap border-b border-gray-200">01/09/2024</td>
-                    <td class="py-5 px-8 text-left border-b border-gray-200">Planejamento Inicial</td>
-                    <td class="py-5 px-8 text-center border-b border-gray-200">Equipe A</td>
-                    <td class="py-5 px-8 text-center border-b border-gray-200">
-                        <span class="inline-flex items-center bg-yellow-100 text-yellow-800 text-xs font-semibold px-3 py-2 rounded-full">
-                            <i class="fas fa-hourglass-half mr-2"></i> Em Andamento
-                        </span>
-                    </td>
-                    <td class="py-5 px-8 text-center border-b border-gray-200">
-                        <button class="text-blue-500 hover:text-blue-700 transition">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr class="hover:bg-gray-100 transition duration-300">
-                    <td class="py-5 px-8 text-left whitespace-nowrap border-b border-gray-200">15/09/2024</td>
-                    <td class="py-5 px-8 text-left border-b border-gray-200">Desenvolvimento do Projeto</td>
-                    <td class="py-5 px-8 text-center border-b border-gray-200">Equipe B</td>
-                    <td class="py-5 px-8 text-center border-b border-gray-200">
-                        <span class="inline-flex items-center bg-green-100 text-green-800 text-xs font-semibold px-3 py-2 rounded-full">
-                            <i class="fas fa-check mr-2"></i> Concluído
-                        </span>
-                    </td>
-                    <td class="py-5 px-8 text-center border-b border-gray-200">
-                        <button class="text-blue-500 hover:text-blue-700 transition">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                    </td>
+                  <td
+                    class="py-5 px-8 text-left whitespace-nowrap border-b border-gray-200"
+                  >
+                    01/09/2024
+                  </td>
+                  <td class="py-5 px-8 text-left border-b border-gray-200">
+                    Planejamento Inicial
+                  </td>
+                  <td class="py-5 px-8 text-center border-b border-gray-200">
+                    Equipe A
+                  </td>
+                  <td class="py-5 px-8 text-center border-b border-gray-200">
+                    <span
+                      class="inline-flex items-center bg-yellow-100 text-yellow-800 text-xs font-semibold px-3 py-2 rounded-full"
+                    >
+                      <i class="fas fa-hourglass-half mr-2"></i> Em Andamento
+                    </span>
+                  </td>
+                  <td class="py-5 px-8 text-center border-b border-gray-200">
+                    <button
+                      class="text-blue-500 hover:text-blue-700 transition"
+                    >
+                      <i class="fas fa-eye"></i>
+                    </button>
+                  </td>
                 </tr>
                 <tr class="hover:bg-gray-100 transition duration-300">
-                    <td class="py-5 px-8 text-left whitespace-nowrap border-b border-gray-200">30/09/2024</td>
-                    <td class="py-5 px-8 text-left border-b border-gray-200">Teste e Validação</td>
-                    <td class="py-5 px-8 text-center border-b border-gray-200">Equipe C</td>
-                    <td class="py-5 px-8 text-center border-b border-gray-200">
-                        <span class="inline-flex items-center bg-red-100 text-red-800 text-xs font-semibold px-3 py-2 rounded-full">
-                            <i class="fas fa-times mr-2"></i> Atrasado
-                        </span>
-                    </td>
-                    <td class="py-5 px-8 text-center border-b border-gray-200">
-                        <button class="text-blue-500 hover:text-blue-700 transition">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                    </td>
+                  <td
+                    class="py-5 px-8 text-left whitespace-nowrap border-b border-gray-200"
+                  >
+                    15/09/2024
+                  </td>
+                  <td class="py-5 px-8 text-left border-b border-gray-200">
+                    Desenvolvimento do Projeto
+                  </td>
+                  <td class="py-5 px-8 text-center border-b border-gray-200">
+                    Equipe B
+                  </td>
+                  <td class="py-5 px-8 text-center border-b border-gray-200">
+                    <span
+                      class="inline-flex items-center bg-green-100 text-green-800 text-xs font-semibold px-3 py-2 rounded-full"
+                    >
+                      <i class="fas fa-check mr-2"></i> Concluído
+                    </span>
+                  </td>
+                  <td class="py-5 px-8 text-center border-b border-gray-200">
+                    <button
+                      class="text-blue-500 hover:text-blue-700 transition"
+                    >
+                      <i class="fas fa-eye"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr class="hover:bg-gray-100 transition duration-300">
+                  <td
+                    class="py-5 px-8 text-left whitespace-nowrap border-b border-gray-200"
+                  >
+                    30/09/2024
+                  </td>
+                  <td class="py-5 px-8 text-left border-b border-gray-200">
+                    Teste e Validação
+                  </td>
+                  <td class="py-5 px-8 text-center border-b border-gray-200">
+                    Equipe C
+                  </td>
+                  <td class="py-5 px-8 text-center border-b border-gray-200">
+                    <span
+                      class="inline-flex items-center bg-red-100 text-red-800 text-xs font-semibold px-3 py-2 rounded-full"
+                    >
+                      <i class="fas fa-times mr-2"></i> Atrasado
+                    </span>
+                  </td>
+                  <td class="py-5 px-8 text-center border-b border-gray-200">
+                    <button
+                      class="text-blue-500 hover:text-blue-700 transition"
+                    >
+                      <i class="fas fa-eye"></i>
+                    </button>
+                  </td>
                 </tr>
                 <!-- Mais linhas podem ser adicionadas conforme necessário -->
-            </tbody>
-        </table>
-    </div>
-</div>
-
-
-
-
-
-            
-            <!-- Filtros Section -->
-            <div class="bg-blue-custom p-4 mb-6 rounded-md shadow-lg filtros-container">
-                <h2 class="text-2xl  text-white mb-4">
-                    Filtrar Programação
-                </h2>
-                <div class="p-4 bg-gray-200 rounded-md flex flex-wrap items-center justify-between space-y-4 md:space-y-0">
-                    <!-- Data Inicial -->
-                    <div class="flex items-center space-x-2">
-                        <i class="fas fa-calendar-alt text-gray-600"></i>
-                        <input type="date" class="form-input" placeholder="Data Inicial" />
-                    </div>
-
-                    <!-- Data Final -->
-                    <div class="flex items-center space-x-2">
-                        <i class="fas fa-calendar-alt text-gray-600"></i>
-                        <input type="date" class="form-input" placeholder="Data Final" />
-                    </div>
-
-                    <!-- HP -->
-                    <div class="flex items-center space-x-2">
-                        <i class="fas fa-clock text-gray-600"></i>
-                        <input type="text" class="form-input" placeholder="HP" />
-                    </div>
-
-                    <!-- 8,48 -->
-                    <div class="flex items-center space-x-2">
-                        <i class="fas fa-hourglass-half text-gray-600"></i>
-                        <input type="text" class="form-input" placeholder="8,48" />
-                    </div>
-
-                    <!-- Classificação -->
-                    <div class="flex items-center space-x-2">
-                        <i class="fas fa-list-alt text-gray-600"></i>
-                        <select class="form-select">
-                            <option>Classificação</option>
-                            <option>Opção 1</option>
-                            <option>Opção 2</option>
-                            <option>Opção 3</option>
-                        </select>
-                    </div>
-
-                    <!-- Execução -->
-                    <div class="flex items-center space-x-2">
-                        <i class="fas fa-cogs text-gray-600"></i>
-                        <select class="form-select">
-                            <option>Execução</option>
-                            <option>Executando</option>
-                            <option>Pendente</option>
-                            <option>Finalizado</option>
-                        </select>
-                    </div>
-
-                    <!-- Botão de Filtrar -->
-                    <div class="flex items-center">
-                        <button class="bg-green-500 text-white p-2 rounded-md hover:bg-green-600">
-                            <i class="fas fa-filter"></i> Filtrar
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Novo Container de Botões -->
-            <div class="bg-white p-4 mb-6 rounded-md shadow-lg flex flex-wrap items-center justify-center gap-2">
-                <!-- Botão Lançar -->
-                <button class="bg-blue-500 text-white flex items-center px-3 py-2 rounded-md shadow-md hover:bg-blue-600 transition">
-                    <i class="fas fa-play mr-2"></i> Lançar
-                </button>
-
-                <!-- Botão Cancelar -->
-                <button class="bg-red-500 text-white flex items-center px-3 py-2 rounded-md shadow-md hover:bg-red-600 transition">
-                    <i class="fas fa-times mr-2"></i> Cancelar
-                </button>
-
-                <!-- Botão Mapa -->
-                <button class="bg-green-500 text-white flex items-center px-3 py-2 rounded-md shadow-md hover:bg-green-600 transition">
-                    <i class="fas fa-map-marker-alt mr-2"></i> Mapa
-                </button>
-
-                <!-- Botão Confirmar -->
-                <button class="bg-yellow-500 text-white flex items-center px-3 py-2 rounded-md shadow-md hover:bg-yellow-600 transition">
-                    <i class="fas fa-check mr-2"></i> Confirmar
-                </button>
-
-                <!-- Botão Consultar -->
-                <button class="bg-purple-500 text-white flex items-center px-3 py-2 rounded-md shadow-md hover:bg-purple-600 transition">
-                    <i class="fas fa-search mr-2"></i> Consultar
-                </button>
-            </div>
-
-            <!-- Developer Credits -->
-            <div class="developer-credits">Desenvolvido por [Vanrley Macedo]</div>
-
-            <!-- Versão do sistema -->
-            <div class="version">Versão 1.0.0</div>
+              </tbody>
+            </table>
+          </div>
         </div>
+
+        <!-- Filtros Section -->
+        <div
+          class="bg-blue-custom p-4 mb-4 rounded-md shadow-lg filtros-container"
+        >
+          <h2 class="text-2xl text-white mb-4">Filtrar Programação</h2>
+          <div
+            class="p-4 bg-gray-200 rounded-md flex flex-wrap items-center justify-between space-y-4 md:space-y-0"
+          >
+            <!-- Data Inicial -->
+            <div class="flex items-center space-x-2">
+              <i class="fas fa-calendar-alt text-gray-600"></i>
+              <input
+                type="date"
+                class="form-input"
+                placeholder="Data Inicial"
+              />
+            </div>
+
+            <!-- Data Final -->
+            <div class="flex items-center space-x-2">
+              <i class="fas fa-calendar-alt text-gray-600"></i>
+              <input type="date" class="form-input" placeholder="Data Final" />
+            </div>
+
+            <!-- HP -->
+            <div class="flex items-center space-x-2">
+              <i class="fas fa-clock text-gray-600"></i>
+              <input type="text" class="form-input" placeholder="HP" />
+            </div>
+
+            <!-- 8,48 -->
+            <div class="flex items-center space-x-2">
+              <i class="fas fa-hourglass-half text-gray-600"></i>
+              <input type="text" class="form-input" placeholder="8,48" />
+            </div>
+
+            <!-- Classificação -->
+            <div class="flex items-center space-x-2">
+              <i class="fas fa-list-alt text-gray-600"></i>
+              <select class="form-select">
+                <option>Classificação</option>
+                <option>Opção 1</option>
+                <option>Opção 2</option>
+                <option>Opção 3</option>
+              </select>
+            </div>
+
+            <!-- Execução -->
+            <div class="flex items-center space-x-2">
+              <i class="fas fa-cogs text-gray-600"></i>
+              <select class="form-select">
+                <option>Execução</option>
+                <option>Executando</option>
+                <option>Pendente</option>
+                <option>Finalizado</option>
+              </select>
+            </div>
+
+            <!-- Botão de Filtrar -->
+            <div class="flex items-center">
+              <button
+                class="bg-green-500 text-white p-2 rounded-md hover:bg-green-600"
+              >
+                <i class="fas fa-filter"></i> Filtrar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Novo Container de Botões -->
+        <div
+          class="bg-white p-4 mt-0 mb-6 rounded-md shadow-lg flex flex-wrap items-center justify-center gap-2"
+        >
+          <!-- Botão Lançar -->
+          <button
+            class="bg-blue-500 text-white flex items-center px-3 py-2 rounded-md shadow-md hover:bg-blue-600 transition"
+          >
+            <i class="fas fa-play mr-2"></i> Lançar
+          </button>
+
+          <!-- Botão Cancelar -->
+          <button
+            class="bg-red-500 text-white flex items-center px-3 py-2 rounded-md shadow-md hover:bg-red-600 transition"
+          >
+            <i class="fas fa-times mr-2"></i> Cancelar
+          </button>
+
+          <!-- Botão Mapa -->
+          <button
+            class="bg-green-500 text-white flex items-center px-3 py-2 rounded-md shadow-md hover:bg-green-600 transition"
+          >
+            <i class="fas fa-map-marker-alt mr-2"></i> Mapa
+          </button>
+
+          <!-- Botão Confirmar -->
+          <button
+            class="bg-yellow-500 text-white flex items-center px-3 py-2 rounded-md shadow-md hover:bg-yellow-600 transition"
+          >
+            <i class="fas fa-check mr-2"></i> Confirmar
+          </button>
+
+          <!-- Botão Consultar -->
+          <button
+            class="bg-purple-500 text-white flex items-center px-3 py-2 rounded-md shadow-md hover:bg-purple-600 transition"
+          >
+            <i class="fas fa-search mr-2"></i> Consultar
+          </button>
+        </div>
+
+        <!-- Developer Credits -->
+        <div class="developer-credits">Desenvolvido por [Vanrley Macedo]</div>
+
+        <!-- Versão do sistema -->
+        <div class="version">Versão 1.0.0</div>
+      </div>
     </div>
 
-    <!-- Scripts -->
-    <script>
-        // Ensure all dropdowns are initially closed
-        document.querySelectorAll(".dropdown-menu").forEach((menu) => {
-            menu.style.display = "none";
-        });
-
-        // Toggle Dropdowns on click
-        document.querySelectorAll(".dropdown-toggle").forEach((toggle) => {
-            toggle.addEventListener("click", function(e) {
-                e.preventDefault();
-                const parentDropdown = this.parentElement;
-                const menu = parentDropdown.querySelector(".dropdown-menu");
-
-                // Close any open dropdowns
-                document.querySelectorAll(".dropdown-menu").forEach((otherMenu) => {
-                    if (otherMenu !== menu) {
-                        otherMenu.style.display = "none";
-                        otherMenu.parentElement.classList.remove("active");
-                        otherMenu.previousElementSibling.querySelector(
-                            "i"
-                        ).style.transform = "rotate(0deg)";
-                    }
-                });
-
-                // Toggle the current dropdown
-                if (menu.style.display === "none") {
-                    menu.style.display = "flex";
-                    parentDropdown.classList.add("active");
-                    this.querySelector("i").style.transform = "rotate(180deg)";
-                } else {
-                    menu.style.display = "none";
-                    parentDropdown.classList.remove("active");
-                    this.querySelector("i").style.transform = "rotate(0deg)";
-                }
-            });
-        });
-
-        // Toggle Fullscreen
-        const fullscreenToggle = document.getElementById("fullscreenToggle");
-
-        fullscreenToggle.addEventListener("click", () => {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen();
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                }
-            }
-        });
-
-        // Initialize SortableJS
-        const container = document.getElementById("sortableContainer");
-        const sortable = Sortable.create(container, {
-            animation: 150,
-            handle: ".drag-handle", // Define que apenas o elemento com essa classe pode ser arrastado
-            onEnd: function(evt) {
-                const order = sortable.toArray();
-                localStorage.setItem("dashboardOrder", JSON.stringify(order));
-            },
-        });
-
-        // Restore order from localStorage
-        const savedOrder = JSON.parse(localStorage.getItem("dashboardOrder"));
-        if (savedOrder) {
-            savedOrder.forEach((id) => {
-                const element = document.querySelector(`[data-id='${id}']`);
-                container.appendChild(element);
-            });
-        }
-
-        // Script para atualizar o relógio
-        function updateClock() {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, "0");
-            const minutes = String(now.getMinutes()).padStart(2, "0");
-            const seconds = String(now.getSeconds()).padStart(2, "0");
-            document.getElementById(
-                "clock"
-            ).textContent = `${hours}:${minutes}:${seconds}`;
-        }
-
-        // Atualiza o relógio a cada segundo
-        setInterval(updateClock, 1000);
-        updateClock(); // Chama para atualizar imediatamente
-
-        document.addEventListener("DOMContentLoaded", function() {
-            // Simular busca de dados com setTimeout
-            setTimeout(() => {
-                // Remover o preloader após 2 segundos (simulação)
-                document.getElementById("preloader").style.display = "none";
-
-                // Adicionar classe para mostrar o conteúdo suavemente
-                document.body.classList.add("content-loaded");
-            }, 2000);
-        });
-    </script>
-</body>
-
+    <!-- Scripts-->
+    <script src="../assets/script.js"></script>
+  </body>
 </html>
