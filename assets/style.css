@@ -22,13 +22,13 @@
     --clock-color: #10b981;
   }
   
-@font-face {
-  font-family: "SF Pro Display";
-  src: url("sf-pro-display/SFPRODISPLAYREGULAR.OTF") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
+  @font-face {
+    font-family: "SF Pro Display";
+    src: url("../sf-pro-display/SFPRODISPLAYREGULAR.OTF") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
 body {
   font-family: "SF Pro Display", sans-serif !important;
   background-color: var(--primary-bg);
