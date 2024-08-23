@@ -18,13 +18,13 @@
     --icon-color: #cfcfcf;
     --text-color: #d1d1d1;
     --header-bg: #1a1a1a;
-    --accent-color: #bb86fc;
-    --clock-color: #bb86fc;
+    --accent-color: #10b981;
+    --clock-color: #10b981;
   }
   
 @font-face {
   font-family: "SF Pro Display";
-  src: url("\sf-pro-display/SFPRODISPLAYREGULAR.OTF") format("truetype");
+  src: url("sf-pro-display/SFPRODISPLAYREGULAR.OTF") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -45,6 +45,65 @@ body {
   padding: 1.5rem;
   border-radius: 0.75rem;
 }
+
+.dark-theme .card-content {
+    background-color: #1a1a1a;
+    /* Cor de fundo dos containers no tema noturno */
+    color: #ffffff;
+    /* Cor do texto nos containers no tema noturno */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dark-theme .table-auto thead th,
+  .dark-theme .table-auto tbody td {
+    color: #ffffff;
+    /* Cor do texto das células de tabela no tema noturno */
+    background-color: #1a1a1a;
+    /* Cor de fundo das células de tabela no tema noturno */
+  }
+  
+  .dark-theme .table-auto tbody tr:hover td {
+    background-color: #333333;
+    /* Cor de fundo das células de tabela ao passar o mouse no tema noturno */
+  }
+  
+  .dark-theme .form-input,
+  .dark-theme .form-select {
+    background-color: #333333;
+    /* Cor de fundo dos inputs no tema noturno */
+    color: #ffffff;
+    /* Cor do texto dos inputs no tema noturno */
+    border-color: #555555;
+    /* Cor da borda dos inputs no tema noturno */
+  }
+  
+  .dark-theme .filtros-container {
+    background-color: #1a1a1a;
+    /* Cor de fundo do container de filtros no tema noturno */
+  }
+  
+  .dark-theme .bg-blue-custom {
+    background-color: #333333;
+    /* Cor de fundo dos headers customizados no tema noturno */
+    color: #ffffff;
+    /* Cor do texto nos headers customizados no tema noturno */
+  }
+  
+  .dark-theme .sidebar a:hover {
+    background-color: #444444;
+    /* Cor de fundo ao passar o mouse nos links da sidebar no tema noturno */
+  }
+  
+  .dark-theme .action-icons button {
+    background-color: #444444;
+    /* Cor de fundo dos botões de ação no tema noturno */
+  }
+  
+  .dark-theme .action-icons button:hover {
+    background-color: #555555;
+    /* Cor de fundo dos botões de ação ao passar o mouse no tema noturno */
+  }
+  
 
 .form-input,
 .form-select {
@@ -293,20 +352,47 @@ header {
   }
 }
 
-#preloader p {
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
+/* Preloader container */
+#preloader {
+    background-color: var(--primary-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
   }
-
-  50% {
-    opacity: 0.5;
+  
+  .dark-theme #preloader {
+    background-color: var(--primary-bg);
   }
-}
+  
+  /* Loader text */
+  .loader-text {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    letter-spacing: 0.1em;
+    display: flex;
+    opacity: 0;
+  }
+  
+  /* Letter animation */
+  .loader-text span {
+    opacity: 0;
+    display: inline-block;
+    animation: fadeInLetter 1s forwards;
+  }
+  
+  @keyframes fadeInLetter {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
 
 #sortableContainer,
 header,
