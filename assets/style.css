@@ -2,7 +2,7 @@
     --sidebar-bg: #1e293b;
     --sidebar-text-color: #e2e8f0;
     --primary-bg: #f1f5f9;
-    --secondary-bg: #42028b;
+    --secondary-bg: linear-gradient(135deg, #6e8efb, #a777e3);
     --icon-color: #eff6ff;
     --text-color: #475569;
     --header-bg: #ffffff;
@@ -40,7 +40,7 @@ body {
 }
 
 .bg-blue-custom {
-  background-color: var(--secondary-bg);
+  background: var(--secondary-bg);
   color: var(--sidebar-text-color);
   padding: 1.5rem;
   border-radius: 0.75rem;
